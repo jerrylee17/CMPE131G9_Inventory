@@ -1,0 +1,3 @@
+mike_owner;mypassword;True
+Peter_Cheff;carrot1;True
+michael_server;notimportant;False
