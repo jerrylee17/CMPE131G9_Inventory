@@ -1,12 +1,12 @@
-from flask import Flask
+from app import app
 from flask import render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
-from User import User
+from app.obj.User import User
 
 userList = []
 
-userDataFile = open("userData.txt","r+")
+userDataFile = open("app/obj/userData.txt","r+")
 
 counter = 0
 
@@ -31,14 +31,12 @@ for User in userList:
     print (User.username)
 
 
-# uncomment line below once you have created the
-# TopCities class inside the form.py file
 
-app = Flask(__name__)
+
 app.config['SECRET_KEY'] = 'some-key'
 
-@app.route('/')
-def home():
+@app.route('/login')
+def login():
 
     name = 'Eric'
 
