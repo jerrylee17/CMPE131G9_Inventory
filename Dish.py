@@ -1,6 +1,6 @@
 class Appetyzer:
 
-    def __init(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5)
+    def __init__(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5):
         self.ingredient1 = ingredient1
         self.ingredient2 = ingredient2
         self.ingredient3 = ingredient3
@@ -9,7 +9,7 @@ class Appetyzer:
 
 class Entree:
 
-    def __init(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5)
+    def __init__(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5):
         self.ingredient1 = ingredient1
         self.ingredient2 = ingredient2
         self.ingredient3 = ingredient3
@@ -18,7 +18,7 @@ class Entree:
 
 class Dessert:
 
-    def __init(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5)
+    def __init__(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5):
         self.ingredient1 = ingredient1
         self.ingredient2 = ingredient2
         self.ingredient3 = ingredient3
