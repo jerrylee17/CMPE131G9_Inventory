@@ -1,0 +1,28 @@
+{% extends "nav.html" %}
+
+{% block content %}
+    
+    <form action="" method="POST" novalidate>
+
+        <p>
+            {{form.username.label}}<br>
+            {{form.username(size=32)}}
+        </p>
+
+        <p>
+            {{form.password.label}}<br>
+            {{form.password(size=32)}}
+        </p>
+
+        <p>
+            {{form.passwordVer.label}}<br>
+            {{form.passwordVer(size=32)}}
+        </p>
+
+        <p>
+            {{form.submit()}}
+        </p>
+
+    </form>
+
+{% endblock %}
