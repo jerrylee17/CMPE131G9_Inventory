@@ -6,3 +6,4 @@ from app import MainPage
 from app import DeliveredPage
 from app import LoginPage
 from app import Register
+from app import FoodOrder
