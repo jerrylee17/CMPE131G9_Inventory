@@ -1,5 +1,20 @@
 [![Build Status](https://travis-ci.com/jerrylee17/CMPE131G9_Inventory.svg?branch=master)](https://travis-ci.com/jerrylee17/CMPE131G9_Inventory)
 
+Instructions to run Application
+
+-Application starts at main-menu page
+-From main page, user can have access to al features of the application
+-In order to make changes that affect the database, user needs to log in
+-Users have different credentials that allow them to access high level procedures
+
+8 Features of the application
+
+-Login
+-Logout
+-Register
+-Input Ingredients
+-Order Food
+
 # CMPE131G9_Inventory
 
 Due to the large number of ingredients that a restaurant uses for its operation, it is sometimes difficult to keep track of every single product. Consequently, a lack of a proper inventory can lead to producing waste, monetary losses, and food poisoning. Our application aims to properly and accurately manage, track, and reduce the waste of perishable and non-perishable products of a restaurant. The main features include keeping an inventory of supplies, tracking sales, ordering supplies, and alerting managers when products are near their due date.
