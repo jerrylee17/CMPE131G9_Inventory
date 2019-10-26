@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/jerrylee17/CMPE131G9_Inventory.svg?branch=master)](https://travis-ci.com/jerrylee17/CMPE131G9_Inventory)
+
 # CMPE131G9_Inventory
 
 Due to the large number of ingredients that a restaurant uses for its operation, it is sometimes difficult to keep track of every single product. Consequently, a lack of a proper inventory can lead to producing waste, monetary losses, and food poisoning. Our application aims to properly and accurately manage, track, and reduce the waste of perishable and non-perishable products of a restaurant. The main features include keeping an inventory of supplies, tracking sales, ordering supplies, and alerting managers when products are near their due date.
