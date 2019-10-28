@@ -3,7 +3,10 @@
         
     </head>
     <body>
-        <div>
+        
+               
+           
+
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/delivered">Input ingredients</a></li>
@@ -16,9 +19,23 @@
                 <li><a href="/manage">Manage</a></li>
                 <li><a href="/registration">Register</a></li>
             </ul>
-            <hr>
+            <hr> 
+            
+            {% with messages = get_flashed_messages()%}
+                {%if messages%}
+
+                    <ul>
+
+                        {%for message in messages%}
+                        <li>{{message}}</li>
+                        {%endfor%}
+
+                    </ul>
+
+                {%endif%}
+            {%endwith%}
+            
             {% block content %} {% endblock %}
-        </div>
     </body>
 
 </html>
