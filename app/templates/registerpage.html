@@ -1,0 +1,33 @@
+{% extends "nav.html" %}
+
+{% block content %}
+
+    <h1>
+        New User Registration
+    </h1>
+
+    <div class = "content-section">
+        <form action="" method="POST">
+                {{form.hidden_tag()}}
+            <p>
+                {{form.username.label}}<br>
+                {{form.username(size=32)}}
+            </p>
+
+            <p>
+                {{form.password.label}}<br>
+                {{form.password(size=32)}}
+            </p>
+
+            <p>
+                {{form.passwordVer.label}}<br>
+                {{form.passwordVer(size=32)}}
+            </p>
+
+            <p>
+                {{form.submit()}}
+            </p>
+
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "nav.html" %}
+{% block content %}
+
+    <h1>
+		Food Order
+	</h1>
+
+    <body>
+        
+        <hr>
+        {%for image in imagesNames%}
+            {{image}}<br>
+            <img src="/app/templates/static/images/image"/><br>
+
+        {%endfor%}
+    </body>
+{%endblock%}
