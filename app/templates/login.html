@@ -1,0 +1,24 @@
+{% extends "nav.html" %}
+
+{% block content %}
+
+<div id = "loginpage" style="background-color:grey;">
+	<head>
+		<link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}"></link>
+	</head>
+
+	<h1>
+		Login to MasterKitchen Inventory
+	</h1>
+
+	<div id = "loginbody">
+		<form id="block" action="" method="POST">
+				{{form.hidden_tag()}}
+			<p> {{ form.username.label }} {{ form.username }} </p>
+			<p> {{ form.password.label }} {{ form.password }} </p>
+			<p> {{ form.submit }} </p>
+		<form>
+	</div>
+</div>
+
+{% endblock %}

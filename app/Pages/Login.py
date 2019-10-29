@@ -1,9 +1,10 @@
-#from app import app
-from flask import Flask
+from app import app
 from flask import render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
-#from app.obj.User import User
+from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
+from app.obj.User import User
+from flask import flash, redirect , request
 
 """
 userList = []
@@ -32,24 +33,36 @@ for User in userList:
 
     print (User.username)
 
-"""
 
-app = Flask(__name__)
 app.config['SECRET_KEY'] = 'some-key'
-
-@app.route('/')
+"""
+@app.route('/login',methods = ["GET","POST"])
 def login():
 
     form = TopCities()
 
+    if form.validate_on_submit():
+        flash("Succesfull Login")
+        return redirect("/dispose")
+
     return render_template('login.html', form=form)
 
+sampleUsername = "person123"
+
+def validate_proof(form, field):
+        if field.data != sampleUsername:
+            raise ValidationError('Wrong password.')
 
 class TopCities(FlaskForm):
-    username = StringField('Username')
-    password = PasswordField('Password')
-    submit = SubmitField('Sign In')
+
+    sampleUsername = "person123"
+    samplePassword = "p"
+
+    username = StringField("Username", [DataRequired(), validate_proof])
+    password = PasswordField("Password", validators=[DataRequired()])#,EqualTo("samplePassword", "Invalid password")])
+    submit = SubmitField("Sign In")
+
     
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()

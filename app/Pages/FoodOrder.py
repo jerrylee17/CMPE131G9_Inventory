@@ -12,8 +12,8 @@ app.config['SECRET_KEY'] = 'some-key'
 
 def foodOrder():
     
-    imagesNames = os.listdir("./app/templates/static/images")
-    return render_template('order.html',imagesNames = imagesNames)
+    imagesNames = os.listdir("./app/static/images")
+    return render_template('order.html', imagesNames = imagesNames)
 
 if __name__ == '__main__':
     app.run()

@@ -1,0 +1,28 @@
+h1 {
+    color: rgb(29, 133, 129);
+    text-align: center;
+    font-family: Impact, sans-serif;
+    text-shadow: 5px 5px rgb(32, 102, 115);
+    font-size: 80
+    
+    
+}
+
+p {
+    color: rgb(64, 18, 82);
+    font-family: Arial, sans-serif;
+    font-size: 30;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;;
+}
+
+#loginbody {
+    text-align: center;
+}
+
+#block {
+    display: inline-block;
+    height: 300px;
+    width: 800px;
+    background-color: rgb(28, 39, 128);
+    border: 10mm ridge rgba(170, 50, 220, .6);
+}
