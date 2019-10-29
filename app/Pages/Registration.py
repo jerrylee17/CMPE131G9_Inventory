@@ -24,7 +24,7 @@ def register():
         flash("Succesfull Registration")
         return redirect("/login")
    
-    return render_template('registerpage.html',form = form)
+    return render_template('registration.html',form = form)
     
 class registration(FlaskForm):
 

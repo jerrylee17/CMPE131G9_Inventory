@@ -15,7 +15,7 @@ def delivered():
     
     form = Ingredients()
     
-    return render_template('DeliveredPage.html', name=name, form=form)
+    return render_template('delivered.html', name=name, form=form)
     
     
 class Ingredients(FlaskForm):
