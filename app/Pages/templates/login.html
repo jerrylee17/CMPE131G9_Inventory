@@ -1,14 +1,12 @@
-{% extends "nav.html" %}
-{% block content %}
+<link rel="stylesheet" href="login.css" />
 
 	<h1>
 		Login to MasterKitchen Inventory
 	</h1>
 	
 	<form>
-		<p> {{ form.username.label }} {{ form.username }} </p>
+		<p id = "username"> hello {{ form.username.label }} {{ form.username }} </p>
 		<p> {{ form.password.label }} {{ form.password }} </p>
 		<p> {{ form.submit.label }} {{ form.submit }} </p>
 
 	</form>
-{%endblock%}

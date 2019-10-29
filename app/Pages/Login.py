@@ -1,9 +1,11 @@
-from app import app
+#from app import app
+from flask import Flask
 from flask import render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
-from app.obj.User import User
+#from app.obj.User import User
 
+"""
 userList = []
 
 userDataFile = open("app/obj/userData.txt","r+")
@@ -30,19 +32,17 @@ for User in userList:
 
     print (User.username)
 
+"""
 
-
-
+app = Flask(__name__)
 app.config['SECRET_KEY'] = 'some-key'
 
-@app.route('/login')
+@app.route('/')
 def login():
-
-    name = 'Eric'
 
     form = TopCities()
 
-    return render_template('login.html', name=name, form=form)
+    return render_template('login.html', form=form)
 
 
 class TopCities(FlaskForm):
