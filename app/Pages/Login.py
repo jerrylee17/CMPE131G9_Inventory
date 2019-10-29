@@ -42,7 +42,7 @@ def login():
 
     form = TopCities()
 
-    return render_template('loginPage.html', name=name, form=form)
+    return render_template('login.html', name=name, form=form)
 
 
 class TopCities(FlaskForm):
