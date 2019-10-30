@@ -2,21 +2,26 @@
 
 {% block content %}
 
-<div id = "loginpage" style="background-color:grey;">
+<div id = "loginpage">
 	<head>
 		<link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}"></link>
 	</head>
 
 	<h1>
-		Login to MasterKitchen Inventory
+		<div id="mainheading">MASTERKITCHEN INVENTORY<br></div>
+
+		<div id="subheading">For all your kitchen needs</div>
 	</h1>
 
 	<div id = "loginbody">
 		<form id="block" action="" method="POST">
+			<p id = "login">LOGIN</p>
 				{{form.hidden_tag()}}
-			<p> {{ form.username.label }} {{ form.username }} </p>
-			<p> {{ form.password.label }} {{ form.password }} </p>
-			<p> {{ form.submit }} </p>
+			<div id = "mainform">
+				<p> {{ form.username.label }} : {{ form.username }} </p>
+				<p> {{ form.password.label }} : {{ form.password }} </p>
+				<p> {{ form.submit }} </p>
+			</div>
 		<form>
 	</div>
 </div>
