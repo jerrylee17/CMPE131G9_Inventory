@@ -1,26 +1,26 @@
-class Appetyzer:
+from app.obj.Ingredient import Ingredient
 
-    def __init__(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5):
-        self.ingredient1 = ingredient1
-        self.ingredient2 = ingredient2
-        self.ingredient3 = ingredient3
-        self.ingredient4 = ingredient4
-        self.ingredient5 = ingredient5
+class Dish:
+    def __init___(self):
+        self.ingredients = {}
+        self.category = None
+    
+    #ingredients = dict{Ingredient:int}, category = string
+    def inputMenu(ingredients, category):
+        self.ingredients=ingredients
+        self.category=category
+    
+    #return ingredients
+    def use():
+        return ingredients
 
-class Entree:
-
-    def __init__(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5):
-        self.ingredient1 = ingredient1
-        self.ingredient2 = ingredient2
-        self.ingredient3 = ingredient3
-        self.ingredient4 = ingredient4
-        self.ingredient5 = ingredient5
-
-class Dessert:
-
-    def __init__(self,ingredient1,ingredient2,ingredient3,ingredient4,ingredient5):
-        self.ingredient1 = ingredient1
-        self.ingredient2 = ingredient2
-        self.ingredient3 = ingredient3
-        self.ingredient4 = ingredient4
-        self.ingredient5 = ingredient5
+    #return object with the ingredient value changed
+    #ingre = dict{Ingredient:int}
+    def useOverride(ingre):
+        if ingre not in ingredients:
+            print("Ingredient not found")
+            return
+        resultSet = ingredients
+        resultSet.update(ingre)
+        return resultSet
+    
