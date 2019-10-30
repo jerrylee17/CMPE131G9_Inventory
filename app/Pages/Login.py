@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from app.obj.User import User
 from flask import flash, redirect , request
 
-"""
+
 userList = []
 
 userDataFile = open("app/obj/userData.txt","r+")
@@ -17,15 +17,13 @@ for line in userDataFile:
 
     fields = line.split(";")
     field1 = fields[0]
-    #print (field1)
     field2 = fields[1]
-    #print (field2)
     field3 = fields[2]
-    #print (field3)
 
     temp = User(field1,field2,field3)
 
     userList.append(temp)
+
 
 userDataFile.close()
 
@@ -35,7 +33,7 @@ for User in userList:
 
 
 app.config['SECRET_KEY'] = 'some-key'
-"""
+
 @app.route('/login',methods = ["GET","POST"])
 def login():
 
@@ -49,17 +47,43 @@ def login():
 
 sampleUsername = "person123"
 
-def validate_proof(form, field):
-        if field.data != sampleUsername:
-            raise ValidationError('Wrong password.')
+userPassword = ""
+
+def validate_username(form, field):
+
+    global userPassword
+
+    validUser = False
+    userNum = 0
+
+    for user in userList:
+        if field.data == user.username:
+            validUser = True
+            break
+        userNum += 1
+
+    if validUser == False:
+        print('Wrong username')
+        raise ValidationError('Wrong username')
+    else:
+        print(userList[userNum].password)
+        userPassword = userList[userNum].password
+        print(userPassword)
+
+
+def validate_password(form, field):
+    print(userPassword)
+    print(field.data)
+    if field.data != userPassword:
+        raise ValidationError('Wrong username or password.')
 
 class TopCities(FlaskForm):
 
     sampleUsername = "person123"
     samplePassword = "p"
 
-    username = StringField("Username", [DataRequired(), validate_proof])
-    password = PasswordField("Password", validators=[DataRequired()])#,EqualTo("samplePassword", "Invalid password")])
+    username = StringField("Username", [DataRequired(), validate_username])
+    password = PasswordField("Password", [DataRequired(), validate_password])
     submit = SubmitField("Sign In")
 
     
