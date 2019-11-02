@@ -1,5 +1,5 @@
 from flask import Flask
-from app.config import Config
+from config import Config
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__,static_url_path="/app/templates/static")
