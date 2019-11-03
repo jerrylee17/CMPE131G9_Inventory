@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template,request
+from flask import render_template,request, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField
 from app.obj.User import User
@@ -12,27 +12,32 @@ app.config['SECRET_KEY'] = 'some-key'
 
 def stock():
 
-    print("entered stock")
-
     form = checkForm()
 
     if form.validate_on_submit():
 
-        print("entered validate")
         if form.submit1.data:
-            return "mike1"
+            return redirect("/checkStockByDish")
         elif form.submit2.data:
-            return"da3"
+            return redirect("/checkStockByIngredient")
 
     return render_template('stock.html',form=form)
 
-@app.route('/checkIngredientByDish',methods = ["GET","POST"])
+@app.route('/checkStockByDish',methods = ["GET","POST"])
 
-def byDish(FlaskForm):
+def byDish():
 
-    dishForm = usingDish()
+    form2 = usingDish()
 
-    return render_template('checkIngredientByDish.html',dishForm=dishForm)
+    return render_template('checkStockByDish.html',form2=form2)
+
+@app.route('/checkStockByIngredient',methods = ["GET","POST"])
+
+def byIngredient():
+
+    form3 = usingIngredient()
+
+    return render_template('checkStockByIngredient.html',form3=form3)
 
 class checkForm(FlaskForm):
 
@@ -41,8 +46,16 @@ class checkForm(FlaskForm):
 
 class usingDish(FlaskForm):
 
-    dish = SelectField(u'Ingredients', choices=["Pasta Alfredo","Vietnamese Soup","Chicken Teriyaki"])
-    submit3 = SubmitField('Confirm')
+    dish = SelectField(u'Dishes', choices=[("Pasta_Alfredo","Pasta Alfredo"),("Vietnamese_Soup","Vietnamese Soup"),("Chicken_Teriyaki","Chicken Teriyaki")])
+
+    submit3 = SubmitField('GO')
+
+class usingIngredient(FlaskForm):
+
+    ingredient = SelectField(u'Ingredients', choices=[('noodles', 'Noodles'), ('pasta_sauce', 'Pasta Sauce'),
+                                                ('meatballs', 'Meatballs'), ('lettuce', 'Lettuce'), ('dressing', 'Dressing')])
+
+    submit4 = SubmitField('GO')
 
 if __name__ == '__main__':
     app.run(debug=True)

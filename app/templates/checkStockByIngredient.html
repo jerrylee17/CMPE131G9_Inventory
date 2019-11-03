@@ -1,0 +1,17 @@
+{% extends "nav.html" %}
+
+{% block content %}
+    <h1>Stock by Ingredient</h1>
+    
+    <form action="" method="POST">
+
+            {{form3.hidden_tag()}}
+
+        <p>
+            {{ form3.ingredient.label }} {{ form3.ingredient }}
+            {{form3.submit4()}}
+        </p>
+
+    </form>
+
+{% endblock %}

@@ -6,32 +6,6 @@ from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from app.obj.User import User
 from flask import flash, redirect , request
 
-
-userList = []
-
-userDataFile = open("app/obj/userData.txt","r+")
-
-counter = 0
-
-for line in userDataFile:
-
-    fields = line.split(";")
-    field1 = fields[0]
-    field2 = fields[1]
-    field3 = fields[2]
-
-    temp = User(field1,field2,field3)
-
-    userList.append(temp)
-
-
-userDataFile.close()
-
-for User in userList:
-
-    print (User.username)
-
-
 app.config['SECRET_KEY'] = 'some-key'
 
 @app.route('/login',methods = ["GET","POST"])
