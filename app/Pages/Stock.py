@@ -42,6 +42,10 @@ def byDish():
 
     form2 = usingDish()
 
+    if form2.validate_on_submit():
+        
+        return "Mike"
+
     return render_template('checkStockByDish.html',form2=form2)
 
 @app.route('/checkStockByIngredient',methods = ["GET","POST"])
@@ -49,6 +53,22 @@ def byDish():
 def byIngredient():
 
     form3 = usingIngredient()
+
+    if form3.validate_on_submit():
+        
+        selected = form3.ingredient.data.replace("_", " ")
+
+        inventory = ingredientInventory.query.all()
+
+        for i in inventory:
+
+            if i.ingredientName == selected:
+                item1 = str(i.id)
+                item2 = i.ingredientName
+                item3 = str(i.quantity)+" "+str(i.unitMeasure)
+                #return "ID Number:"+str(i.id)+"  Ingredient Name:"+i.ingredientName+ "  Quantity:"+str(i.quantity)+" "+str(i.unitMeasure)
+                return render_template('checkStockByIngredient.html',form3=form3,item1=item1,item2=item2,item3=item3)
+                break
 
     return render_template('checkStockByIngredient.html',form3=form3)
 
@@ -75,7 +95,7 @@ class usingDish(FlaskForm):
 
     for item2 in noDuplicateList:
 
-        pairs.append([item2,item2])
+        pairs.append([item2.replace(" ", "_"),item2])
 
     dish = SelectField(u'Dishes', choices=pairs)
 
@@ -92,7 +112,7 @@ class usingIngredient(FlaskForm):
         object1 = item.ingredientName
         object2 = item.ingredientName
 
-        generalList.append([object1,object2])
+        generalList.append([object1.replace(" ", "_"),object2])
 
     ingredient = SelectField(u'Ingredients', choices=generalList)
 
