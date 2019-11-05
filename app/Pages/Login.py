@@ -5,8 +5,56 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from app.obj.User import User
 from flask import flash, redirect , request
+from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
+from app import db
 
 app.config['SECRET_KEY'] = 'some-key'
+
+'''db.create_all()'''
+'''
+userDataFile = open("app/obj/baseInventoryData.txt","r+")
+
+for line in userDataFile:
+
+    fields = line.split(";")
+
+    field0 = fields[0]
+
+    field1 = fields[1]
+
+    field2 = fields[2]
+
+    print (field0,field1,field2)
+
+    temp = ingredientInventory(ingredientName=field0,quantity=field1,unitMeasure=field2)
+
+    db.session.add(temp)
+    db.session.commit()
+
+userDataFile.close()'''
+'''
+userDataFile = open("app/obj/baseDishData.txt","r+")
+
+for line in userDataFile:
+
+    fields = line.split(";")
+
+    field0 = fields[0]
+
+    field1 = fields[1]
+
+    field2 = fields[2]
+
+    field3 = fields[3]
+
+    print (field0,field1,field2,field3)
+
+    temp = dishIngredientReq(dishName=field0,ingredientName2=field1,quantity2=field2,unitMeasure2=field3)
+
+    db.session.add(temp)
+    db.session.commit()
+
+userDataFile.close()'''
 
 @app.route('/login',methods = ["GET","POST"])
 def login():

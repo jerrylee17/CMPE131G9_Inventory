@@ -5,8 +5,21 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from app.obj.User import User
 from wtforms.validators import DataRequired
 import os
+from app.Pages.models import ingredientInventory,dishIngredientReq
+from app import db
 
 app.config['SECRET_KEY'] = 'some-key'
+'''
+inventory = ingredientInventory.query.all()
+
+for i in inventory:
+    print(i.id,i.ingredientName,i.quantity,i.unitMeasure)'''
+
+'''
+dishIngredients = dishIngredientReq.query.all()
+
+for i in dishIngredients:
+    print(i.id,i.dishName,i.ingredientName2,i.quantity2,i.unitMeasure2)'''
 
 @app.route('/stock',methods = ["GET","POST"])
 
@@ -46,14 +59,42 @@ class checkForm(FlaskForm):
 
 class usingDish(FlaskForm):
 
-    dish = SelectField(u'Dishes', choices=[("Pasta_Alfredo","Pasta Alfredo"),("Vietnamese_Soup","Vietnamese Soup"),("Chicken_Teriyaki","Chicken Teriyaki")])
+    dishIngredients = dishIngredientReq.query.all()
+
+    mainList=[]
+
+    for item in dishIngredients:
+    
+        mainList.append(item.dishName)
+
+    noDuplicateList = list(set(mainList))
+
+    noDuplicateList.sort()
+
+    pairs=[]
+
+    for item2 in noDuplicateList:
+
+        pairs.append([item2,item2])
+
+    dish = SelectField(u'Dishes', choices=pairs)
 
     submit3 = SubmitField('GO')
 
 class usingIngredient(FlaskForm):
 
-    ingredient = SelectField(u'Ingredients', choices=[('noodles', 'Noodles'), ('pasta_sauce', 'Pasta Sauce'),
-                                                ('meatballs', 'Meatballs'), ('lettuce', 'Lettuce'), ('dressing', 'Dressing')])
+    inventoryTemp = ingredientInventory.query.all()
+
+    generalList=[]
+
+    for item in inventoryTemp:
+    
+        object1 = item.ingredientName
+        object2 = item.ingredientName
+
+        generalList.append([object1,object2])
+
+    ingredient = SelectField(u'Ingredients', choices=generalList)
 
     submit4 = SubmitField('GO')
 

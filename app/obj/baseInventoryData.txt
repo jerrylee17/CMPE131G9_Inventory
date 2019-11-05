@@ -1,0 +1,42 @@
+Angel Hair Pasta;4550;gr
+Avocado;20;unit
+Bacon;40;unit
+Baguette;10;unit
+Baking Powder;60;gr
+Baking Soda;60;gr
+Bananas;40;unit
+Beef;7200;gr
+Bittersweet Chocolate;1500;gr
+Butter;980;gr
+Cheddar Cheese;40;gr
+Chicken Breast;40;unit
+Chicken Broth;2400;ml
+Cinnamon Powder;40;gr
+Eggs;210;unit
+Flour;3000;gr
+Garlic;7;unit
+Graham Crackers;320;unit
+Heavy Cream;4000;gr
+Horseradish;130;gr
+Lemon;30;unit
+Lime;10;unit
+Marshmallows;80;unit
+Mayonnaise;2000;ml
+Milk Chocolate Bars;20;unit
+Mustard;150;ml
+Olive Oil;1500;ml
+Parsley;10;unit
+Pepper;1.2;gr
+Provolone Cheese;2;unit
+Red Onion;10;unit
+Red Pepper Flakes;25;gr
+Red Wine;600;ml
+Salt;62.7;gr
+Shrimp;4550;gr
+Sugar;2300;gr
+Tomato;10;unit
+Vanilla;50;ml
+Vegetable Oil;1200;ml
+White Onion;10;unit
+White Wine;2400;ml
+Yellow Onion;20;unit

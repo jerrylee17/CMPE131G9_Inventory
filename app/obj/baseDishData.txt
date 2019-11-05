@@ -1,0 +1,64 @@
+Bacon Cheddar Deviled Eggs;Eggs;4;unit
+Bacon Cheddar Deviled Eggs;Mayonnaise;120;ml
+Bacon Cheddar Deviled Eggs;Bacon;4;unit
+Bacon Cheddar Deviled Eggs;Cheddar Cheese;26;gr
+Bacon Cheddar Deviled Eggs;Mustard;15;ml
+Beef and Caramelized Onion Canapes;Baguette;1;unit
+Beef and Caramelized Onion Canapes;Olive Oil;15;ml
+Beef and Caramelized Onion Canapes;Red Onion;1;unit
+Beef and Caramelized Onion Canapes;Red Wine;60;ml
+Beef and Caramelized Onion Canapes;Mayonnaise;80;ml
+Beef and Caramelized Onion Canapes;Horseradish;13;gr
+Beef and Caramelized Onion Canapes;Beef;227;gr
+Guacamole;Avocado;2;unit
+Guacamole;White Onion;1;unit
+Guacamole;Garlic;0.2;unit
+Guacamole;Tomato;1;unit
+Guacamole;Lime;1;unit
+Guacamole;Salt;0.4;gr
+Guacamole;Pepper;0.4;gr
+Indoor S'mores;Graham Crackers;32;unit
+Indoor S'mores;Milk Chocolate Bars;2;unit
+Indoor S'mores;Marshmallows;8;unit
+Banana Bread;Flour;250;gr
+Banana Bread;Baking Soda;6;gr
+Banana Bread;Baking Powder;6;gr
+Banana Bread;Salt;6;gr
+Banana Bread;Eggs;2;unit
+Banana Bread;Sugar;200;gr
+Banana Bread;Bananas;4;unit
+Banana Bread;Vanilla;5;ml
+Banana Bread;Vegetable Oil;120;ml
+Banana Bread;Cinnamon;4;gr
+Dark Chocolate Mousse;Bttersweet chocolate;150;gr
+Dark Chocolate Mousse;Heavy Cream;400;gr
+Dark Chocolate Mousse;Eggs;3;unit
+Dark Chocolate Mousse;Sugar;30;gr
+Chicken Francese;Chicken Breast;4;unit
+Chicken Francese;Flour;50;gr
+Chicken Francese;Salt;0.4;gr
+Chicken Francese;Eggs;4;unit
+Chicken Francese;Pepper;0.4;gr
+Chicken Francese;Olive Oil;60;ml
+Chicken Francese;Lemon;0.5;unit
+Chicken Francese;White Wine;120;ml
+Chicken Francese;Chicken Broth;240;ml
+Chicken Francese;Lemon;0.5;unit
+Chicken Francese;Butter;28;gr
+Chicken Francese;Parsley;0.5;unit
+Philly Steak Sandwich;Olive Oil;45;ml
+Philly Steak Sandwich;Yellow Onions;2;unit
+Philly Steak Sandwich;Salt;15.04;gr
+Philly Steak Sandwich;Pepper;0.4;gr
+Philly Steak Sandwich;Beef;680;gr
+Philly Steak Sandwich;Pepper;0.4;gr
+Philly Steak Sandwich;Provolone Cheese;0.2;unit
+Gina's Shrimp Scampi w/ Angel Hair Pasta;Angel Hair Pasta;455;gr
+Gina's Shrimp Scampi w/ Angel Hair Pasta;Olive Oil;30;ml
+Gina's Shrimp Scampi w/ Angel Hair Pasta;Shrimp;455;gr
+Gina's Shrimp Scampi w/ Angel Hair Pasta;Garlic;0.5;unit
+Gina's Shrimp Scampi w/ Angel Hair Pasta;Red Pepper Flakes;2.5;gr
+Gina's Shrimp Scampi w/ Angel Hair Pasta;Lemon;2;unit
+Gina's Shrimp Scampi w/ Angel Hair Pasta;White Wine;120;ml
+Gina's Shrimp Scampi w/ Angel Hair Pasta;Butter;70;gr
+Gina's Shrimp Scampi w/ Angel Hair Pasta;Parsley;0.5;unit
