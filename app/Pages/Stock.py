@@ -5,10 +5,15 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from app.obj.User import User
 from wtforms.validators import DataRequired
 import os
-from app.Pages.models import ingredientInventory,dishIngredientReq
+from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
 from app import db
 
 app.config['SECRET_KEY'] = 'some-key'
+
+'''selectedIngredient = ingredientInventory.query.get(1)
+
+selectedIngredient.quantity = 4530.00
+db.session.commit()'''
 '''
 inventory = ingredientInventory.query.all()
 
@@ -20,6 +25,12 @@ dishIngredients = dishIngredientReq.query.all()
 
 for i in dishIngredients:
     print(i.id,i.dishName,i.ingredientName2,i.quantity2,i.unitMeasure2)'''
+
+
+record = disposalRecord.query.all()
+
+for i in record:
+    print(i.id,i.userName,i.ingredientName3,i.quantity3,i.unitMeasure3,i.comment)
 
 @app.route('/stock',methods = ["GET","POST"])
 
