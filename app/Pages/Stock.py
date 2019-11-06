@@ -81,16 +81,25 @@ def byDish():
         quan = []
         mea = []
 
+        finalList = []
+
+        temp = None
+
+        signal = True
+
         for i in idList:
             for j in inventory:
                 if i == j.id:
+                    temp ="Product ID Number:"+str(i)+"| Ingredient:"+j.ingredientName+" Quantity:"+str(j.quantity)+j.unitMeasure
+                    finalList.append(temp)
+                    temp = None
                     ing.append(j.ingredientName)
                     quan.append(j.quantity)
                     mea.append(j.unitMeasure)
+                    
 
-        print(ing)
-        print(quan)
-        print(mea)
+        return render_template('checkStockByDish.html',form2=form2,signal=signal,finalList = finalList)
+        
     return render_template('checkStockByDish.html',form2=form2)
 
 @app.route('/checkStockByIngredient',methods = ["GET","POST"])

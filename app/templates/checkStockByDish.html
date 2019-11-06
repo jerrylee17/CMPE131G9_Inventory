@@ -14,4 +14,18 @@
 
     </form>
 
+    <b1>
+        {%if signal%}
+            <div class="data row">
+                <div>
+
+                    {% for item in finalList %}
+                        <li> {{ item }}  </li>
+                    {% endfor %}
+
+                </div>
+            </div>
+        {%endif%}
+    </b1>
+
 {% endblock %}
