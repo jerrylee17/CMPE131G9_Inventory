@@ -2,5 +2,23 @@
 
 {% block content %}
     <h1>Dispose</h1>
+    
+    <form action="" method="POST">
+
+            {{form.hidden_tag()}}
+
+        <p> 
+            {{ form.ingredient.label }} {{ form.ingredient }}<br><br>
+
+            {{ form.measure.label }} {{ form.measure }}<br><br>
+
+            {{form.quantity.label}} {{form.quantity}} <br><br>
+
+            {{form.usercomment.label}} {{form.usercomment(size=64)}} <br><br>
+
+            {{form.submit()}}
+        </p>
+
+    </form>
 
 {% endblock %}

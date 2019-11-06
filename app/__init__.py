@@ -1,5 +1,5 @@
 from flask import Flask
-from app.config import Config
+from config import Config
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__,static_url_path="/app/templates/static")
@@ -17,3 +17,4 @@ from app.Pages import MakeMenu
 from app.Pages import Manage
 from app.Pages import Registration
 from app.Pages import Stock
+from app.Pages import models
