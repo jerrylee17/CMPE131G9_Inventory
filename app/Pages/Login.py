@@ -5,7 +5,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from app.obj.User import User
 from flask import flash, redirect , request
-from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
+from app.Pages.models import ingredientInventory,dish,disposalRecord
 from app import db
 
 app.config['SECRET_KEY'] = 'some-key'
@@ -49,7 +49,7 @@ for line in userDataFile:
 
     print (field0,field1,field2,field3)
 
-    temp = dishIngredientReq(dishName=field0,ingredientName2=field1,quantity2=field2,unitMeasure2=field3)
+    temp = dish(dishName=field0,ingredientName2=field1,quantity2=field2,unitMeasure2=field3)
 
     db.session.add(temp)
     db.session.commit()

@@ -5,7 +5,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from app.obj.User import User
 from wtforms.validators import DataRequired
 import os
-from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
+from app.Pages.models import ingredientInventory,dish,disposalRecord
 from app import db
 from flask import flash, redirect , request
 

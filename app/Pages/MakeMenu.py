@@ -17,5 +17,9 @@ def makemenu():
     quantity = IntegerField('Quantity')
     return render_template('makemenu.html')
 
+class menu(FlaskForm):
+    pass
+
+
 if __name__ == '__main__':
     app.run()

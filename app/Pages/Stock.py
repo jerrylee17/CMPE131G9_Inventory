@@ -5,7 +5,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from app.obj.User import User
 from wtforms.validators import DataRequired
 import os
-from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
+from app.Pages.models import ingredientInventory,dish,disposalRecord
 from app import db
 
 app.config['SECRET_KEY'] = 'some-key'
@@ -21,7 +21,7 @@ for i in inventory:
     print(i.id,i.ingredientName,i.quantity,i.unitMeasure)'''
 
 '''
-dishIngredients = dishIngredientReq.query.all()
+dishIngredients = dish.query.all()
 
 for i in dishIngredients:
     print(i.id,i.dishName,i.ingredientName2,i.quantity2,i.unitMeasure2)'''
@@ -90,7 +90,7 @@ class checkForm(FlaskForm):
 
 class usingDish(FlaskForm):
 
-    dishIngredients = dishIngredientReq.query.all()
+    dishIngredients = dish.query.all()
 
     mainList=[]
 
