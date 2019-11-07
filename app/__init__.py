@@ -1,15 +1,11 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
 from config import Config
+from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__, static_url_path="/app/templates/static")
+app = Flask(__name__,static_url_path="/app/templates/static")
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
-login = LoginManager(app)
-# right side is the function that's called to login users
-login.login_view = 'login'
 
 from app.Pages import Delivered
 from app.Pages import Dispose
