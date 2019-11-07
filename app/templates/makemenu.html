@@ -1,14 +1,55 @@
 {% extends "nav.html" %}
 {% block content %}
+<script type="text/javascript">
+    function GetDynamicTextBox(value){
+        return '{{ form.ingredient.label }} {{ form.ingredient }}' +
+                ' {{ form.measure.label }} {{ form.measure }}' + 
+                ' {{form.quantity.label}} {{form.quantity}}' +
+                '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
+    }
+    function AddTextBox() {
+        var div = document.createElement('DIV');
+        div.innerHTML = GetDynamicTextBox("");
+        document.getElementById("TextBoxContainer").appendChild(div);
+    }
 
+    function RemoveAllBoxes(div){
+        var node = document.getElementById("TextBoxContainer");
+        node.innerHTML = "";
+    }
+    
+    function RemoveTextBox(div) {
+        document.getElementById("TextBoxContainer").removeChild(div.parentNode);
+    }
+
+    function RecreateDynamicTextboxes() {
+        var values = eval('<%=Values%>');
+        if (values != null) {
+            var html = "";
+            for (var i = 0; i < values.length; i++) {
+                html += "<div>" + GetDynamicTextBox(values[i]) + "</div>";
+            }
+            document.getElementById("TextBoxContainer").innerHTML = html;
+        }
+    }
+    window.onload = RecreateDynamicTextboxes;
+</script>
     <h1>
-		Make Menu
+		Make Dish
 	</h1>
-
     <body>
-        {{form.hidden_tag}}
         <p>
-            
+            <form id="form1" runat="server">
+                <input id="btnAdd" type="button" value="Add Ingredient" onclick="AddTextBox()" />
+                <input id="btnDel" type="button" value="Remove All Ingredients" onclick="RemoveAllBoxes()">
+                <br />
+                <br />
+                <div id="TextBoxContainer">
+                    <!--Textboxes will be added here -->
+                </div>
+                <br />
+            </form>
+            {{done.clicky()}}
         </p>
     </body>
 {%endblock%}
