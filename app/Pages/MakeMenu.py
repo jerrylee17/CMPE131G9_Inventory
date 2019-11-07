@@ -16,14 +16,14 @@ def makemenu():
     form = ing()
     done = butn()
 
-    if done.data:
-        return redirect("/dishMade")
+    # if done.data:
+    #     return redirect("/dishMade")
 
     return render_template('makemenu.html', form=form, done=done)
 
-@app.route('/dishMade', methods = ["GET", "POST"])
-def madeDish():
-    done = create()
+# @app.route('/dishMade', methods = ["GET", "POST"])
+# def madeDish():
+#     done = create()
 
 class butn(FlaskForm):
     clicky = SubmitField('Create Dish')
