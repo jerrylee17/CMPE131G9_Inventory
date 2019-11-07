@@ -27,10 +27,10 @@ for i in dishIngredients:
     print(i.id,i.dishName,i.ingredientName2,i.quantity2,i.unitMeasure2)'''
 
 
-record = disposalRecord.query.all()
+'''record = disposalRecord.query.all()
 
 for i in record:
-    print(i.id,i.userName,i.ingredientName3,i.quantity3,i.unitMeasure3,i.comment)
+    print(i.id,i.userName,i.ingredientName3,i.quantity3,i.unitMeasure3,i.comment)'''
 
 @app.route('/stock',methods = ["GET","POST"])
 
@@ -54,9 +54,52 @@ def byDish():
     form2 = usingDish()
 
     if form2.validate_on_submit():
-        
-        return "Mike"
 
+        ingredientList=[]
+        
+        dishIngre = dishIngredientReq.query.all()
+
+        '''for i in dishIngre:
+            print(i.id,i.dishName,i.ingredientName2,i.quantity2,i.unitMeasure2)'''
+
+        for i in dishIngre:
+            
+            if i.dishName == form2.dish.data.replace("_", " "):
+                ingredientList.append(i.ingredientName2)
+
+        inventory = ingredientInventory.query.all()
+        idList = []
+
+        for i in ingredientList:
+            for j in inventory:
+                if i == j.ingredientName:
+                    idList.append(j.id)
+        
+        idList.sort()
+
+        ing = []
+        quan = []
+        mea = []
+
+        finalList = []
+
+        temp = None
+
+        signal = True
+
+        for i in idList:
+            for j in inventory:
+                if i == j.id:
+                    temp ="Product ID Number:"+str(i)+"| Ingredient:"+j.ingredientName+" Quantity:"+str(j.quantity)+j.unitMeasure
+                    finalList.append(temp)
+                    temp = None
+                    ing.append(j.ingredientName)
+                    quan.append(j.quantity)
+                    mea.append(j.unitMeasure)
+                    
+
+        return render_template('checkStockByDish.html',form2=form2,signal=signal,finalList = finalList)
+        
     return render_template('checkStockByDish.html',form2=form2)
 
 @app.route('/checkStockByIngredient',methods = ["GET","POST"])
