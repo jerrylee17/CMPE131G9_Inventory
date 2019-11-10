@@ -5,12 +5,12 @@ from app.Pages.models import dishIngredientReq
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import StringField, IntegerField, SubmitField, FloatField
 from wtforms.validators import DataRequired
-
+from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
 @app.route('/makemenu', methods = ["GET","POST"])
-
+@login_required
 def makemenu():
     Addit = SubmitField('+')
     form = ing()

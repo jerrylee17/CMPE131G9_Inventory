@@ -2,31 +2,36 @@ from app import app
 from flask import render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
+from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from app.obj.User import User
-from wtforms.validators import DataRequired, Length, EqualTo
-from flask import flash, redirect , request
+from app.Pages.models import User
+from flask import flash, redirect , request, url_for
+from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
+from app import db
+
+from flask_login import current_user, login_user
+from flask_login import logout_user
+from flask_login import login_required
+from werkzeug.urls import url_parse
 
 app.config['SECRET_KEY'] = 'some-key'
 
-@app.route('/registration',methods = ["GET","POST"])
+@app.route('/register',methods = ["GET","POST"])
 
 def register():
-
-    form = registration()
-
-    #if form.validate_on_submit():
-
-    #  print("entered if")
-        
-    #  return redirect(url_for('login'))
-
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = register()
     if form.validate_on_submit():
-        flash("Succesfull Registration")
-        return redirect("/login")
-   
-    return render_template('registration.html',form = form)
+        user = User(username=form.username.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect('/login')
+    return render_template('register.html', title='Register', form=form)
     
-class registration(FlaskForm):
+class register(FlaskForm):
 
     #print("entered registration")
     

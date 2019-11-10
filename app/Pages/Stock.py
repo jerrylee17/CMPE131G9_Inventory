@@ -7,6 +7,7 @@ from wtforms.validators import DataRequired
 import os
 from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
 from app import db
+from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
@@ -33,7 +34,7 @@ for i in record:
     print(i.id,i.userName,i.ingredientName3,i.quantity3,i.unitMeasure3,i.comment)'''
 
 @app.route('/stock',methods = ["GET","POST"])
-
+@login_required
 def stock():
 
     form = checkForm()

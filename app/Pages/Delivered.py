@@ -2,13 +2,15 @@ from app import app
 from flask import render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, SelectField
-    
+from flask_login import login_required
+
 # uncomment line below once you have created the
 # TopCities class inside the form.py file
     
 app.config['SECRET_KEY'] = 'some-key'
     
 @app.route('/delivered')
+@login_required
 def delivered():
     
     name = 'Eric'

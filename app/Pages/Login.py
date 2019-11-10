@@ -4,9 +4,15 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from app.obj.User import User
-from flask import flash, redirect , request
+from app.Pages.models import User
+from flask import flash, redirect , request, url_for
 from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
 from app import db
+
+from flask_login import current_user, login_user
+from flask_login import logout_user
+from flask_login import login_required
+from werkzeug.urls import url_parse
 
 app.config['SECRET_KEY'] = 'some-key'
 
@@ -59,18 +65,40 @@ userDataFile.close()'''
 @app.route('/login',methods = ["GET","POST"])
 def login():
 
-    form = TopCities()
+    """
+    form = Login()
 
     if form.validate_on_submit():
         flash("Succesfull Login")
         return redirect("/dispose")
 
     return render_template('login.html', form=form)
+    """
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    form = Login()
+    if form.validate_on_submit():
+        # look at first result first()
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid username or password')
+            return redirect('/login')
+            flash('Invalid username or password')
+        login_user(user)
+        # return to page before user got asked to login
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+
+        return redirect(next_page)
+    return render_template('login.html', title='Sign in', form=form)
 
 sampleUsername = "person123"
 
 userPassword = ""
 
+"""
 def validate_username(form, field):
 
     global userPassword
@@ -98,14 +126,21 @@ def validate_password(form, field):
     print(field.data)
     if field.data != userPassword:
         raise ValidationError('Wrong username or password.')
+"""
 
-class TopCities(FlaskForm):
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/login')
+
+
+class Login(FlaskForm):
 
     sampleUsername = "person123"
     samplePassword = "p"
 
-    username = StringField("Username", [DataRequired(), validate_username])
-    password = PasswordField("Password", [DataRequired(), validate_password])
+    username = StringField("Username", [DataRequired()])
+    password = PasswordField("Password", [DataRequired()])
     submit = SubmitField("Sign In")
 
     

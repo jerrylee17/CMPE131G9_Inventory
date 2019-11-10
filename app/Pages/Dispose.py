@@ -8,10 +8,12 @@ import os
 from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
 from app import db
 from flask import flash, redirect , request
+from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
 @app.route('/dispose',methods=["GET","POST"])
+@login_required
 def dispose():
 
     form = disposal()

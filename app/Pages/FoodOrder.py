@@ -5,11 +5,12 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from app.obj.User import User
 from wtforms.validators import DataRequired
 import os
+from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
 @app.route('/order')
-
+@login_required
 def foodOrder():
     
     imagesNames = os.listdir("./app/static/images")
