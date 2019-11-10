@@ -83,8 +83,9 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
+            return redirect('/login')
+            flash('Invalid username or password')
+        login_user(user)
         # return to page before user got asked to login
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -126,6 +127,12 @@ def validate_password(form, field):
     if field.data != userPassword:
         raise ValidationError('Wrong username or password.')
 """
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/login')
+
 
 class Login(FlaskForm):
 
