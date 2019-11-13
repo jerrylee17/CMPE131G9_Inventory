@@ -49,7 +49,7 @@ class dishIngre(db.Model):
     name = db.Column(db.String(64),index = True,unique=True)
     quantity = db.Column(db.Float)
     unit = db.Column(db.String(4))
-    dish_id = db.Column(db.Integer, db.ForeignKey('dishingredientreq.id'), nullable=False)
+    dish_id = db.Column(db.Integer, db.ForeignKey('dish_ingredient_req.id'), nullable=False)
 
     def __repr__(self):
         return f'<ingredientInventory:{self.ingredientName},{self.quantity},{self.unitMeasure}>'
