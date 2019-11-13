@@ -1,7 +1,7 @@
 from app import app
-from flask import render_template,request
+from flask import render_template, request, redirect
 from flask_wtf import FlaskForm
-from app.Pages.models import dishIngredientReq
+from app.Pages.models import dishIngredientReq, dishIngre
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import StringField, IntegerField, SubmitField, FloatField
 from wtforms.validators import DataRequired
@@ -12,20 +12,22 @@ app.config['SECRET_KEY'] = 'some-key'
 @app.route('/makemenu', methods = ["GET","POST"])
 @login_required
 def makemenu():
-    Addit = SubmitField('+')
     form = ing()
     done = butn()
 
-    # if done.data:
-    #     return redirect("/dishMade")
+    # if done.validate_on_submit():
+    #     if done.name.data:
+    #         dish = dishIngredientReq(dishName=done.name.data)
+    #         ing = dishIngre(name=form.name.data, quantity=form.quantity.data, measure=form.measure.data)
 
     return render_template('makemenu.html', form=form, done=done)
 
-# @app.route('/dishMade', methods = ["GET", "POST"])
-# def madeDish():
-#     done = create()
+@app.route('/dishMade', methods = ["GET", "POST"])
+def madeDish():
+    return render_template('menuDone.html')
 
 class butn(FlaskForm):
+    name = StringField('Dish Name')
     clicky = SubmitField('Create Dish')
 
 class ing(FlaskForm):
