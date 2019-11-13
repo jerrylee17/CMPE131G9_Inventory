@@ -2,9 +2,9 @@
 {% block content %}
 <script type="text/javascript">
     function GetDynamicTextBox(value){
-        return '{{ form.ingredient.label }} {{ form.ingredient }}' +
-                ' {{ form.measure.label }} {{ form.measure }}' + 
-                ' {{form.quantity.label}} {{form.quantity}}' +
+        return '{{ form.ingredient.label }} {{ form.ingredient }}'+
+                 '{{ form.measure.label }} {{ form.measure }}'+
+                 '{{form.quantity.label}} {{form.quantity}}'+
                 '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
     }
     function AddTextBox() {
@@ -39,6 +39,10 @@
 	</h1>
     <body>
         <p>
+            <div>
+                Dish Name
+                {{done.name()}}
+            </div>
             <form id="form1" runat="server">
                 <input id="btnAdd" type="button" value="Add Ingredient" onclick="AddTextBox()" />
                 <input id="btnDel" type="button" value="Remove All Ingredients" onclick="RemoveAllBoxes()">
