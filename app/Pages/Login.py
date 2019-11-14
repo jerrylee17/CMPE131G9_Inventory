@@ -75,7 +75,7 @@ def login():
     return render_template('login.html', form=form)
     """
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect('/main')
 
     form = Login()
     if form.validate_on_submit():
