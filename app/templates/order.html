@@ -5,13 +5,19 @@
 		Food Order
 	</h1>
 
-    <body>
-        
-        <hr>
-        {%for image in imagesNames%}
-            {{image}}<br>
-            <img src="/app/static/images/image"/><br>
+    <form action="" method="POST" >
 
-        {%endfor%}
-    </body>
+        {{order.hidden_tag()}}
+        <p>
+            {{order.dsel.label}}{{order.dsel}}
+            {{order.order()}}
+        </p>
+        
+        {%if signal%}
+            <div class="complete">
+                <b1>Order Complete</b1>
+            </div>
+        {%endif%}
+            
+    </form>
 {%endblock%}

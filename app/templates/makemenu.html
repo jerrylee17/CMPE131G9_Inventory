@@ -1,11 +1,15 @@
 {% extends "nav.html" %}
 {% block content %}
 <script type="text/javascript">
-    function GetDynamicTextBox(value){
-        return '{{ form.ingredient.label }} {{ form.ingredient }}'+
-                 '{{ form.measure.label }} {{ form.measure }}'+
+    function GetDynamicTextBox(label){
+        s = '{{ form.ingredient.label }} {{ form.ingredient }}'+
                  '{{form.quantity.label}} {{form.quantity}}'+
+                 '{{ form.measure.label }} {{ form.measure }}'+
                 '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
+        
+        return s
+        // return '<input name = "DynamicTextBox" type="text" value = "' + value + '" />' +
+        //     '<input type="button" value="Remove" onclick = "RemoveTextBox(this)" />'
     }
     function AddTextBox() {
         var div = document.createElement('DIV');
