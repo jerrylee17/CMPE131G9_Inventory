@@ -1,21 +1,28 @@
 <html>
     <head>
-        
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"></link>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </head>
+    <head1 class = "card-transparent">
+        <div class="card-block special-card" style="background-color: rgba(245, 245, 245, 0.4); ">
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"></link>
+        </div>
+    </head1>
     <body>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/delivered">Input ingredients</a></li>
-                <li><a href="/makemenu">Enter Menu</a></li>
-                <li><a href="/order">Order food</a></li>
-                <li><a href="/dispose">Dispose</a></li>
-                <li><a href="/stock">Check Ingredients</a></li>
-                <li><a href="/gauge">Gauge mode</a></li>
-                <li><a href="/logout">Logout</a></li>
-                <li><a href="/manage">Manage</a></li>
-            </ul>
-            <hr> 
-            
+        <nav aria-label="breadcrumb">
+            <ol class = "breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/delivered">Input ingredients</a></li>
+                <li class="breadcrumb-item"><a href="/makemenu">Enter Menu</a></li>
+                <li class="breadcrumb-item"><a href="/order">Order food</a></li>
+                <li class="breadcrumb-item"><a href="/dispose">Dispose</a></li>
+                <li class="breadcrumb-item"><a href="/stock">Check Ingredients</a></li>
+                <li class="breadcrumb-item"><a href="/gauge">Gauge mode</a></li>
+                <li class="breadcrumb-item"><a href="/logout">Logout</a></li>
+                <li class="breadcrumb-item"><a href="/manage">Manage</a></li>
+            </ul> 
+        </nav>    
             {% with messages = get_flashed_messages()%}
                 {%if messages%}
 
