@@ -48,6 +48,13 @@ Instructions to run Application
  
 9. "Disposal Record display" feature
 
-  A feature that allows user with proper credentials to get a record of the disposed ingredients. To access this feature, select the      "Disposal Record" option located in the navigation bar and the disposal record will be displayed in the main page. 
+  A feature that allows a user with proper credentials to get a record of the disposed ingredients. To access this feature, select the      "Disposal Record" option located in the navigation bar and the disposal record will be displayed in the main page. 
   
+ 10. "Create a new Dish" feature
+  
+  A feature that allows a user with proper credentials to create a new dish. Name , ingredients, and quantities will be saved to the "detail dish recipe" database. To access this feature, select the "Enter Menu" option located in the navigation bar, entered the name of the dish, and enter the name of the ingredient, quantity, and unit measure. To create the new dish, click on "Create Dish" button.
+  
+ 11. "Order Food" feature
+ 
+   A feature that allow users to order food to be made by the kitchen. In the background, the application will subtract the ingredients needed for the dish from the main inventory database. To access this feature, select the "Order Food" option located in the navigation bar, select the dish, and click on order food button. 
   
