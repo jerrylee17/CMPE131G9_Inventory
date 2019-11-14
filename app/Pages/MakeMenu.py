@@ -3,7 +3,7 @@ from flask import render_template, request, redirect
 from flask_wtf import FlaskForm
 from app.Pages.models import dishIngredientReq, dishIngre
 from flask_sqlalchemy import SQLAlchemy
-from wtforms import StringField, IntegerField, SubmitField, FloatField
+from wtforms import StringField, IntegerField, SubmitField, FloatField, SelectField
 from wtforms.validators import DataRequired
 from flask_login import login_required
 
@@ -33,7 +33,8 @@ class butn(FlaskForm):
 class ing(FlaskForm):
     ingredient = StringField('Ingredient: ', validators=[DataRequired()])
     quantity = FloatField('Quantity: ',validators=[DataRequired()])
-    measure = StringField('Measure: ', validators=[DataRequired()])
+    measures = [('unit', 'unit'), ('gr','gr'), ('ml', 'ml')]
+    measure = SelectField(u'Measure: ', choices=measures, validators=[DataRequired()])
 
 
 if __name__ == '__main__':
