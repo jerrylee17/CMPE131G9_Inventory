@@ -1,6 +1,6 @@
 .vscode/
-app.db
-__pycache__/
-app/__pycache__/
-app/obj/__pycache__/
-app/Pages/__pycache__/
+# app.db
+# __pycache__/
+# app/__pycache__/
+# app/obj/__pycache__/
+# app/Pages/__pycache__/

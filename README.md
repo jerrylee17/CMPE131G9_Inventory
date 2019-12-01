@@ -16,7 +16,7 @@ Instructions to run Application
 
 2.Register Page
 
-  If a new user account is requiered, a logged user with propper credentials can create and register a new account by clicking the option "Register" located in the navigation bar.
+  Registers a new user. Click on the option "register" which is located in the login page. Enter a username, password, and confirm password. 
 
 3.Navigation Bar
 
@@ -45,3 +45,16 @@ Instructions to run Application
 8.CSS Login Page
   
   Layout of the Login Page. It contains a main image and centers the user and password fields for easy access. 
+ 
+9. "Disposal Record display" feature
+
+  A feature that allows a user with proper credentials to get a record of the disposed ingredients. To access this feature, select the      "Disposal Record" option located in the navigation bar and the disposal record will be displayed in the main page. 
+  
+ 10. "Create a new Dish" feature
+  
+  A feature that allows a user with proper credentials to create a new dish. Name , ingredients, and quantities will be saved to the "detail dish recipe" database. To access this feature, select the "Enter Menu" option located in the navigation bar, entered the name of the dish, and enter the name of the ingredient, quantity, and unit measure. To create the new dish, click on "Create Dish" button.
+  
+ 11. "Order Food" feature
+ 
+   A feature that allow users to order food to be made by the kitchen. In the background, the application will subtract the ingredients needed for the dish from the main inventory database. To access this feature, select the "Order Food" option located in the navigation bar, select the dish, and click on order food button. 
+  

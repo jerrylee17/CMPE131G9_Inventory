@@ -36,9 +36,9 @@ class dishIngredientReq(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     dishName = db.Column(db.String(64),index = True)
     ingredients = db.relationship('dishIngre', backref='dish', lazy='dynamic')
-    # ingredientName2 = db.Column(db.String(64),index = True)
-    # quantity2 = db.Column(db.Float)
-    # unitMeasure2 = db.Column(db.String(4))
+    ingredientName2 = db.Column(db.String(64),index = True)
+    quantity2 = db.Column(db.Float)
+    unitMeasure2 = db.Column(db.String(4))
 
     def __repr__(self):
         return f'<dishIngredientReq:{self.dishName},{self.ingredientName2},{self.quantity2},{self.unitMeasure2}>'
