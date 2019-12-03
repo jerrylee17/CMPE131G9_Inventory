@@ -14,20 +14,34 @@ app.config['SECRET_KEY'] = 'some-key'
 def makemenu():
     form = ing()
     done = butn()
+    
 
-    # if done.validate_on_submit():
-    #     if done.name.data:
-    #         dish = dishIngredientReq(dishName=done.name.data)
-    #         ing = dishIngre(name=form.name.data, quantity=form.quantity.data, measure=form.measure.data)
+    if done.validate_on_submit():
+        if done.name.data:
+            dish = dishIngredientReq(dishName=done.name.data)
+        else:
+            return redirect('/errorDish')
+        
+        return redirect('/dishMade')
 
     return render_template('makemenu.html', form=form, done=done)
 
 @app.route('/dishMade', methods = ["GET", "POST"])
 def madeDish():
-    return render_template('menuDone.html')
+    back = err()
+    if back.validate_on_submit():
+        return redirect('/makemenu')
+    return render_template('menuDone.html', back=back)
+
+@app.route('/errorDish', methods = ["GET", "POST"])
+def errordish():
+    back = err()
+    if back.validate_on_submit():
+        return redirect('/makemenu')
+    return render_template('errDish.html', back=back)
 
 class butn(FlaskForm):
-    name = StringField('Dish Name')
+    name = StringField('Dish Name', validators=[DataRequired()])
     clicky = SubmitField('Create Dish')
 
 class ing(FlaskForm):
@@ -35,7 +49,14 @@ class ing(FlaskForm):
     quantity = FloatField('Quantity: ',validators=[DataRequired()])
     measures = [('unit', 'unit'), ('gr','gr'), ('ml', 'ml')]
     measure = SelectField(u'Measure: ', choices=measures, validators=[DataRequired()])
+    
+    # ingredient = StringField('Ingredient: ')
+    # quantity = FloatField('Quantity: ')
+    # measures = [('unit', 'unit'), ('gr','gr'), ('ml', 'ml')]
+    # measure = SelectField(u'Measure: ', choices=measures)
 
+class err(FlaskForm):
+    back = SubmitField('Go back')
 
 if __name__ == '__main__':
     app.run(debug=True)

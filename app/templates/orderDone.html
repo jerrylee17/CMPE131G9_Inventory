@@ -1,0 +1,18 @@
+{% extends "nav.html" %}
+{% block content %}
+
+    <h1>
+		Food Order
+	</h1>
+    <p>
+        The order has been completed
+    </p>
+    <p>
+        click below to go back
+    </p>
+    <form action = "" method="POST">
+        {{order.hidden_tag()}}
+        {{order.ret()}} 
+    </form>
+    
+{%endblock%}
