@@ -2,7 +2,15 @@
 
 {% block content %}
     <h1>Make Dish</h1>
-    <p>There was an error making the dish</p>
+    {%if signal == "formerr"%}
+        <p>There was an error making the dish</p>
+    {%endif%}
+    {%if signal == "dishVoid"%}
+        <p>Please fill out all necessary information</p>
+    {%endif%}
+    {%if signal == "measure"%}
+        <p>Please give a valid measure. Measures are unit, gr, ml.</p>
+    {%endif%}
     <form action="" method="POST">
         {{back.hidden_tag()}}
         {{back.back()}}
