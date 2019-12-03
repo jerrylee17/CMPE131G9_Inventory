@@ -1,4 +1,5 @@
 from app import app
+from app import db
 from flask import render_template, request, redirect
 from flask_wtf import FlaskForm
 from app.Pages.models import dishIngredientReq, dishIngre
@@ -15,14 +16,32 @@ def makemenu():
     form = ing()
     done = butn()
     
-
+    selections = ("unit", "gr", "ml")
     if done.validate_on_submit():
         if done.name.data:
             dish = dishIngredientReq(dishName=done.name.data)
         else:
-            return redirect('/errorDish')
-        me = request.form["ingredient0"]
-        print(me)
+            return redirect('/errorDish/' + "formErr" )
+        i = 0
+        while True:
+            ig, q, m = "ingredient"+str(i),"quantity"+str(i), "measure"+str(i)
+            try:
+                ingredient = request.form[ig]
+                quantity = request.form[q]
+                measure = request.form[m]
+                if not ingredient or not quantity or not measure:
+                    return redirect('/errorDish/' + "dishVoid")
+                measure = measure.lower()
+                if measure not in selections:
+                    return redirect('errorDish/' + "measure")
+                # print(request.form[ig])
+                i += 1
+                d = dishIngredientReq(dishName=dish, ingredientName2=ingredient, quantity2=quantity, unitMeasure2=measure)
+                db.session.add(d)
+                db.session.commit()
+            except:
+                break
+
         return redirect('/dishMade')
 
     return render_template('makemenu.html', form=form, done=done)
@@ -34,12 +53,12 @@ def madeDish():
         return redirect('/makemenu')
     return render_template('menuDone.html', back=back)
 
-@app.route('/errorDish', methods = ["GET", "POST"])
-def errordish():
+@app.route('/errorDish/<string:errtype>', methods = ["GET", "POST"])
+def errordish(errtype):
     back = err()
     if back.validate_on_submit():
         return redirect('/makemenu')
-    return render_template('errDish.html', back=back)
+    return render_template('errDish.html', signal=errtype, back=back)
 
 class butn(FlaskForm):
     name = StringField('Dish Name', validators=[DataRequired()])
