@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/jerrylee17/CMPE131G9_Inventory.svg?branch=master)](https://travis-ci.com/jerrylee17/CMPE131G9_Inventory)
 
-Instructions to run Application
+# Instructions to run Application
 
 1. Application starts at main-menu page
 2. From main page, user can have access to all features of the application.
