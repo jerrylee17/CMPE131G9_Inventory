@@ -1,19 +1,23 @@
 {% extends "nav.html" %}
 {% block content %}
 <script type="text/javascript">
-    function GetDynamicTextBox(label){
-        s = '{{ form.ingredient.label }} {{ form.ingredient }}'+
-                 '{{form.quantity.label}} {{form.quantity}}'+
-                 '{{ form.measure.label }} {{ form.measure }}'+
-                '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
+    function GetDynamicTextBox(ing, quant, measure, idnum){
+        // s = '{{ form.ingredient.label }} {{ form.ingredient }}'+
+        //          '{{form.quantity.label}} {{form.quantity}}'+
+        //          '{{ form.measure.label }} {{ form.measure }}'+
+        //         '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
         
-        return s
-        // return '<input name = "DynamicTextBox" type="text" value = "' + value + '" />' +
-        //     '<input type="button" value="Remove" onclick = "RemoveTextBox(this)" />'
+        // return s
+        return `${(idnum+1).toString()}) `+`<nbsp />Ingredient: <input name = "ingredient${idnum.toString()}" type="text" value = "` + ing + '" />' +
+            `<nbsp />Quantity: <input name = "quantity${idnum.toString()}" type="text" value = "` + quant + '" />' +
+            `<nbsp />Measure: <input name = "measure${idnum.toString()}" type="text" value = "` + measure + '" />' +
+            '<input type="button" value="Remove" onclick = "RemoveTextBox(this)" />'
     }
     function AddTextBox() {
         var div = document.createElement('DIV');
-        div.innerHTML = GetDynamicTextBox("");
+        var idnum = document.getElementById("TextBoxContainer").childNodes.length;
+        // div.setAttribute("id", "div"+idnum.toString())
+        div.innerHTML = GetDynamicTextBox("", "", "", idnum);
         document.getElementById("TextBoxContainer").appendChild(div);
     }
 
@@ -36,7 +40,7 @@
             document.getElementById("TextBoxContainer").innerHTML = html;
         }
     }
-    window.onload = RecreateDynamicTextboxes;
+    window.onload = RemoveAllBoxes;
 </script>
     <h1>
 		Make Dish

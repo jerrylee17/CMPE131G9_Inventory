@@ -21,7 +21,8 @@ def makemenu():
             dish = dishIngredientReq(dishName=done.name.data)
         else:
             return redirect('/errorDish')
-        
+        me = request.form["ingredient0"]
+        print(me)
         return redirect('/dishMade')
 
     return render_template('makemenu.html', form=form, done=done)
