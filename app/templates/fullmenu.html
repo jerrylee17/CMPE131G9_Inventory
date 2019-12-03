@@ -1,0 +1,9 @@
+{% extends "nav.html" %}
+
+{% block content %}
+        
+    <h1>All dishes</h1>
+    {% for i, dish in all %}
+    <div>{{i+1}}. {{dish}}</div>
+    {% endfor %}
+{% endblock %}
