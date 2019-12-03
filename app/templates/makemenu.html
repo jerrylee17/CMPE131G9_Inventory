@@ -1,23 +1,23 @@
 {% extends "nav.html" %}
 {% block content %}
 <script type="text/javascript">
-    function GetDynamicTextBox(ing, quant, measure, idnum){
+    function GetDynamicTextBox(idnum){
         // s = '{{ form.ingredient.label }} {{ form.ingredient }}'+
         //          '{{form.quantity.label}} {{form.quantity}}'+
         //          '{{ form.measure.label }} {{ form.measure }}'+
         //         '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
         
         // return s
-        return `${(idnum+1).toString()}) Ingredient: <input name = "ingredient${idnum.toString()}" type="text" value = "${ing}" />` +
-            `  Quantity: <input name = "quantity${idnum.toString()}" type="text" value = "${quant}" />` +
-            `  Measure: <input name = "measure${idnum.toString()}" type="text" value = "${measure}" />` +
+        return `${(idnum+1).toString()}) Ingredient: <input name = "ingredient${idnum.toString()}" type="text"/>` +
+            `  Quantity: <input name = "quantity${idnum.toString()}" type="text" />` +
+            `  Measure: <input name = "measure${idnum.toString()}" type="text" />` +
             `  <input type="button" value="Remove" onclick="RemoveTextBox(this)" />`
     }
     function AddTextBox() {
         var div = document.createElement('DIV');
         var idnum = document.getElementById("TextBoxContainer").childNodes.length;
         // div.setAttribute("id", "div"+idnum.toString())
-        div.innerHTML = GetDynamicTextBox("", "", "", idnum);
+        div.innerHTML = GetDynamicTextBox(idnum);
         document.getElementById("TextBoxContainer").appendChild(div);
     }
 
