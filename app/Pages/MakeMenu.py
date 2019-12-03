@@ -31,8 +31,14 @@ def makemenu():
                 if not ingredient or not quantity or not measure:
                     return redirect('/errorDish/' + "dishVoid")
                 measure = measure.lower()
-                # if measure not in selections:
-                #     return redirect('errorDish/' + "measure")
+                if measure not in selections:
+                    return redirect('errorDish/' + "measure")
+                try:
+                    quantity = int(quantity)
+                except:
+                    return redirect('errorDish/' + "notint")
+                if quantity <= 0:
+                    return redirect('errorDish/' + "lt0")
                 # print(request.form[ig])
                 print(ingredient)
                 d = dishIngredientReq(dishName=dish, ingredientName2=ingredient, quantity2=quantity, unitMeasure2=measure)

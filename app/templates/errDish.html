@@ -11,6 +11,12 @@
     {%if signal == "measure"%}
         <p>Please give a valid measure. Measures are unit, gr, ml.</p>
     {%endif%}
+    {% if signal == "lt0"%}
+        <p>Make sure the quantity is greater than 0!</p>
+    {%endif%}
+    {% if signal == "notint"%}
+        <p>Make sure the quantity is an integer!</p>
+    {%endif%}
     <form action="" method="POST">
         {{back.hidden_tag()}}
         {{back.back()}}

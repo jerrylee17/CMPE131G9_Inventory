@@ -8,10 +8,10 @@
         //         '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
         
         // return s
-        return `${(idnum+1).toString()}) `+`<nbsp />Ingredient: <input name = "ingredient${idnum.toString()}" type="text" value = "` + ing + '" />' +
-            `<nbsp />Quantity: <input name = "quantity${idnum.toString()}" type="text" value = "` + quant + '" />' +
-            `<nbsp />Measure: <input name = "measure${idnum.toString()}" type="text" value = "` + measure + '" />' +
-            '<input type="button" value="Remove" onclick = "RemoveTextBox(this)" />'
+        return `${(idnum+1).toString()}) Ingredient: <input name = "ingredient${idnum.toString()}" type="text" value = "${ing}" />` +
+            `  Quantity: <input name = "quantity${idnum.toString()}" type="text" value = "${quant}" />` +
+            `  Measure: <input name = "measure${idnum.toString()}" type="text" value = "${measure}" />` +
+            `  <input type="button" value="Remove" onclick="RemoveTextBox(this)" />`
     }
     function AddTextBox() {
         var div = document.createElement('DIV');
