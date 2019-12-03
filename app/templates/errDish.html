@@ -1,10 +1,11 @@
 {% extends "nav.html" %}
 
 {% block content %}
-    <h1>Make Dish</h1> <br />
-    <p>Successfully entered Dish</p>
+    <h1>Make Dish</h1>
+    <p>There was an error making the dish</p>
     <form action="" method="POST">
         {{back.hidden_tag()}}
         {{back.back()}}
     </form>
+
 {% endblock %}
