@@ -82,7 +82,6 @@ def delivered():
 
         return redirect ('/dd')
     """
-    return render_template('delivered.html', form=form)
 
 
 @app.route('/deliverederr', methods=["GET", "POST"])
