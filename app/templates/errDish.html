@@ -17,6 +17,9 @@
     {% if signal == "notint"%}
         <p>Make sure the quantity is an integer!</p>
     {%endif%}
+    {%if signal == "noparam"%}
+        <p>No parameters</p>
+    {%endif%}
     <form action="" method="POST">
         {{back.hidden_tag()}}
         {{back.back()}}
