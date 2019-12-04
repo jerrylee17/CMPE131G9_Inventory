@@ -19,34 +19,40 @@ def foodOrder():
         dish = order.dsel.data.replace("_", " ")
         all = dishIngredientReq.query.all()
         # load up ingredient and value
-        ing, val = [], []
+        ingval = []
         for x in all:
             if x.dishName == dish:
-                ing.append(x.ingredientName2)
-                val.append(x.quantity2)
+                ingval.append([x.ingredientName2,x.quantity2])
 
-        
         inv = ingredientInventory.query.all()
-        flag = False
-        for i in range(len(ing)):
+        idval = {}
+        for i in range(len(ingval)):
             for vi in inv:
-                if ing[i] == vi.ingredientName:
-                    if vi.quantity-val[i] > 0:
-                        vi.quantity -= val[i]
+                if ingval[i][0] == vi.ingredientName:
+                    if vi.quantity-ingval[i][1] > 0:
+                        idval[vi.id] = vi.quantity - ingval[i][1]
+                        # vi.quantity -= val[i]
                     else:
-                        flag = True
-                        break
-            if flag:
-                break
+                        return redirect('/ordererr')
+        for x in idval:
+            dataval = ingredientInventory.query.get(x)
+            dataval.quantity = idval[x]
+        db.session.commit()
 
-        if not flag:
-            db.session.commit()
         
 
         # return render_template('order.html', order=order, signal=True)
         return redirect('/orderdone')
         
     return render_template('order.html', order=order)
+
+@app.route('/ordererr', methods=["GET", "POST"])
+@login_required
+def ordErr():
+    back = goBack()
+    if back.validate_on_submit():
+        return redirect('/order')
+    return render_template('ordererr.html', back=back)
 
 @app.route('/orderdone', methods=["GET", "POST"])
 @login_required
@@ -55,6 +61,9 @@ def doneOrder():
     if order.validate_on_submit():
         return redirect('/order')
     return render_template("orderDone.html", order=order)
+
+class goBack(FlaskForm):
+    back = SubmitField('Go Back')
 
 class dishForm(FlaskForm):
     dishes = dishIngredientReq.query.all()
