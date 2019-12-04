@@ -6,10 +6,24 @@
 	</head>
 
 	<h1>
-		<div id="mainheading">MASTERKITCHEN INVENTORY<br></div>
-
-		<div id="subheading">For all your kitchen needs</div>
+		<div id="mainheading">Master Kitchen Inventory<br></div>
 	</h1>
+	
+	
+	
+	<div id = "loginbody">
+		<form action="" method="POST">
+			<p id = "login">Welcome</p>
+				{{form.hidden_tag()}}
+			<div id = "mainform">
+				<p> {{ form.username(placeholder="Username") }} </p>
+				<p> {{ form.password(placeholder="Password",) }} </p>
+				<p class_ = "checkbox"> {{ form.submit}}</p>
+				<br><br><br>
+				<p1 > <a href="/register" style="color:rgb(40, 0, 151);">New User</a></p1>
+			</div>
+		<form>
+	</div>
 
 	{% with messages = get_flashed_messages()%}
 		{%if messages%}
@@ -17,7 +31,7 @@
 			<ul id = "flash">
 
 				{%for message in messages%}
-					<font color="red">{{message}}</font>
+					<font color="red">-{{message}}</font>
 				{%endfor%}
 
 			</ul>
@@ -25,15 +39,4 @@
 		{%endif%}
 	{%endwith%}
 	
-	<div id = "loginbody">
-		<form id="block" action="" method="POST">
-			<p id = "login">LOGIN</p>
-				{{form.hidden_tag()}}
-			<div id = "mainform">
-				<p> {{ form.username.label }} : {{ form.username }} </p>
-				<p> {{ form.password.label }} : {{ form.password }} </p>
-				<p> {{ form.submit }} <a href="/register">Register</a></p>
-			</div>
-		<form>
-	</div>
 </div>
