@@ -18,12 +18,14 @@ def foodOrder():
     if order.validate_on_submit():
         dish = order.dsel.data.replace("_", " ")
         all = dishIngredientReq.query.all()
+        # load up ingredient and value
         ing, val = [], []
         for x in all:
             if x.dishName == dish:
                 ing.append(x.ingredientName2)
                 val.append(x.quantity2)
 
+        
         inv = ingredientInventory.query.all()
         flag = False
         for i in range(len(ing)):

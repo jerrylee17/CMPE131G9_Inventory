@@ -4,10 +4,10 @@
 		Input Ingredients
 	</h1>
 	
-	<form>
-		<p> {{ form.food.label }} {{ form.food }}
-		{{ form.quantity.label }} {{ form.quantity }} </p>
-		<p> {{ form.submit.label }} {{ form.submit }} </p>
-
+	<form method="POST">
+		{{form.hidden_tag()}}
+		{{form.isel.label}}: {{form.isel}}
+		{{form.quantity.label}}: {{form.quantity}}
+		{{form.finished()}}
 	</form>
 {% endblock %}

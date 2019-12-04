@@ -1,31 +1,68 @@
 from app import app
-from flask import render_template
+from app import db
+from flask import render_template, request, redirect
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, IntegerField, SelectField
+from app.Pages.models import ingredientInventory
+from wtforms import StringField, IntegerField, SubmitField, FloatField, SelectField
+from wtforms.validators import DataRequired
 from flask_login import login_required
 
-# uncomment line below once you have created the
-# TopCities class inside the form.py file
     
 app.config['SECRET_KEY'] = 'some-key'
     
-@app.route('/delivered')
+@app.route('/delivered', methods=["GET", "POST"])
 @login_required
 def delivered():
-    
-    name = 'Eric'
-    
-    form = Ingredients()
-    
-    return render_template('delivered.html', name=name, form=form)
-    
-    
-class Ingredients(FlaskForm):
-    food = SelectField(u'Ingredients', choices=[('noodles', 'Noodles'), ('pasta_sauce', 'Pasta Sauce'),
-                                                ('meatballs', 'Meatballs'), ('lettuce', 'Lettuce'), ('dressing', 'Dressing')])
-    quantity = IntegerField('Quantity')
-    submit = SubmitField('Input')
-    
+    form = IngredientForm()
+    if form.validate_on_submit():
+        ing = form.isel.data.replace("_", " ")
+        try:
+            amount = int(form.quantity.data)
+        except:
+            return redirect('/deliverederr')
+        if amount <= 0:
+            return redirect('/deliverederr')
+        all = ingredientInventory.query.all()
+        for x in all:
+            if x.ingredientName == ing:
+                x.quantity -= amount
+                break
+        return redirect ('/dd')
+
+    return render_template('delivered.html', form=form)
+@app.route('/deliverederr', methods=["GET", "POST"])
+@login_required
+def delErr():
+    back = goBack()
+    if back.validate_on_submit():
+        return redirect('/delivered')
+    return render_template('delerr.html', back=back)
+
+@app.route('/dd', methods=["GET", "POST"])
+@login_required
+def deliveredDone():
+    back = goBack()
+    if back.validate_on_submit():
+        return redirect('/delivered')
+    return render_template('dd.html', back=back)
+
+class goBack(FlaskForm):
+    back = SubmitField('Go Back')
+
+class IngredientForm(FlaskForm):
+    ingredients = ingredientInventory.query.all()
+    all = []
+    for ingredient in ingredients:
+        all.append(ingredient.ingredientName)
+    # list of all ingredients
+    all = sorted(list(set(all)))
+    iform = []
+    for ing in all:
+        iform.append([ing.replace(" ", "_"), ing])
+    # iform.append(["other", "other"])
+    isel = SelectField(u'Ingredient', choices=iform, validators=[DataRequired()])
+    quantity = IntegerField('Quantity', validators=[DataRequired()])
+    finished = SubmitField('Deliver ingredients')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
