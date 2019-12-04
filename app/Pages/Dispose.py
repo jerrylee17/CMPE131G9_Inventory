@@ -5,7 +5,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from app.obj.User import User
 from wtforms.validators import DataRequired
 import os
-from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
+from app.Pages.models import ingredientInventory,disposalRecord
 from app import db
 from flask import flash, redirect, request
 from flask_login import login_required
@@ -25,10 +25,7 @@ def dispose():
                 idNumber = i.id
                 break
         selectedIngredient = ingredientInventory.query.get(idNumber)
-        if selectedIngredient.unitMeasure[:-1] != form.measure.data:
-            flash("Incorrect Unit Measure")
-            return redirect("/dispose")
-        elif form.quantity.data <= 0:
+        if form.quantity.data <= 0:
             flash("Please enter something above 0!")
             return redirect("/dispose")
         elif form.quantity.data>selectedIngredient.quantity:
@@ -37,7 +34,7 @@ def dispose():
         newQuantity = selectedIngredient.quantity - form.quantity.data
         selectedIngredient.quantity = newQuantity
         db.session.commit()
-        temp = disposalRecord(userName = "Logged User",ingredientName3=selected,quantity3=form.quantity.data,unitMeasure3=form.measure.data,comment=form.usercomment.data)
+        temp = disposalRecord(userName = "Logged User",ingredientName3=selected,quantity3=form.quantity.data,unitMeasure3=form.object2,comment=form.usercomment.data)
         db.session.add(temp)
         db.session.commit()
         flash("Removal successfull")
@@ -48,12 +45,14 @@ def dispose():
 class disposal(FlaskForm):
     inventoryTemp = ingredientInventory.query.all()
     generalList=[]
+    object2 = ""
     for item in inventoryTemp:
         object1 = item.ingredientName
-        object2 = item.ingredientName
-        generalList.append([object1.replace(" ", "_"),object2])
+        object2 = item.unitMeasure
+        finalstr = str(object1) + " ( " + str(object2) + " ) "
+        generalList.append([object1.replace(" ", "_"), finalstr])
     ingredient = SelectField(u'Ingredient', choices=generalList)
-    measure = SelectField(u'Measure', choices=[('unit', 'unit'),('ml', 'ml'), ('gr', 'gr')])
+    # measure = SelectField(u'Measure', choices=[('unit', 'unit'),('ml', 'ml'), ('gr', 'gr')])
     quantity = FloatField('Quantity',validators=[DataRequired()])
     usercomment = StringField('Comments', validators=[DataRequired()])                                          
     submit = SubmitField('Remove From Inventory')

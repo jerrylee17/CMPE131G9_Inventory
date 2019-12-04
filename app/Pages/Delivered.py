@@ -7,13 +7,20 @@ from wtforms import StringField, IntegerField, SubmitField, FloatField, SelectFi
 from wtforms.validators import DataRequired
 from flask_login import login_required
 
-    
+
 app.config['SECRET_KEY'] = 'some-key'
-    
+
 @app.route('/delivered', methods=["GET", "POST"])
 @login_required
 def delivered():
     form = IngredientForm()
+    # print(form.dic)
+    # unit = "hi"
+    # try:
+    #     unit = form.dic[form.isel.data]
+    # except:
+    #     pass
+    
     if form.validate_on_submit():
         amount = form.quantity.data
         if amount <= 0:
@@ -58,13 +65,20 @@ class IngredientForm(FlaskForm):
     ingredients = ingredientInventory.query.all()
     all = []
     for ingredient in ingredients:
-        all.append(ingredient.ingredientName)
+        all.append([ingredient.ingredientName, ingredient.unitMeasure])
     # list of all ingredients
-    all = sorted(list(set(all)))
+    # all = sorted(list(set(all)))
     iform = []
     for ing in all:
-        iform.append([ing.replace(" ", "_"), ing])
+        iform.append([ing[0].replace(" ", "_"), ing[0]+" ( "+ing[1]+ ")"])
     # iform.append(["other", "other"])
+    # dic = {}
+    # # clean up units inside all
+    # for elem in all:
+    #     elem[1]=elem[1].replace("\n", "")
+    #     # dictionary of ingredient to unit
+    #     dic[elem[0]]= elem[1]
+        
     isel = SelectField(u'Ingredient', choices=iform, validators=[DataRequired()])
     quantity = IntegerField('Quantity', validators=[DataRequired()])
     finished = SubmitField('Deliver ingredients')
