@@ -1,9 +1,35 @@
 {% extends "nav.html" %}
 
 {% block content %}
-        
-    <h1>All dishes</h1>
-    {% for i, dish in all %}
-    <div>{{i+1}}. {{dish}}</div>
-    {% endfor %}
+<div class="container">
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
+					
+					<h2 id = "loginbody" class= "font_HighVoltage">
+							Current Menu
+					</h2>
+			
+					<div  id = "loginbody">
+
+							<ul class="list-group-item">
+
+                                    {% for i, dish in all %}
+                                    
+									<li class="list-group-item d-flex justify-content-start">
+                                            <div> {{i+1}}. </div>
+                
+											<div> {{dish}} </div>
+                                    </li>
+
+                                    {% endfor %}
+							</ul>
+                    </div><br>
+			</div>
+			
+			<div class="col-sm">
+		
+			</div>
+		</div>  
+</div>
+
 {% endblock %}

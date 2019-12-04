@@ -6,3 +6,46 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
 }
+
+@font-face { font-family: Script; 
+    src: url("Script.ttf"); }
+
+@font-face { font-family: HighVoltage; 
+    src: url("HighVoltage.ttf"); } 
+
+#font_script{
+    text-align: center;
+
+    color: rgb(0, 0, 0);
+
+    font-family: Script;
+
+    font-size-adjust: 80;
+}
+
+.font_HighVoltage{
+    text-align: center;
+
+    color: rgb(0, 0, 0);
+
+    font-family: HighVoltage;
+
+    font-size-adjust: 80;
+}
+
+#background_{
+
+    background: rgba(236, 236, 236,0.5);
+}
+
+#loginbody{
+
+    text-align: center;
+
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

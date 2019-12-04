@@ -1,24 +1,55 @@
 {% extends "nav.html" %}
 
 {% block content %}
-    <h1>Dispose</h1>
-    
-    <form action="" method="POST">
 
-            {{form.hidden_tag()}}
+<div class="container">
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
+					
+					<h2 id = "loginbody" class= "font_HighVoltage">
+							Disposal Form
+					</h2>
+	
+					<form method="POST"  id = "loginbody">
+							{{form.hidden_tag()}}
 
-        <p> 
-            {{ form.ingredient.label }} {{ form.ingredient }}<br><br>
+							<ul class="list-group-item">
 
-            {{ form.measure.label }} {{ form.measure }}<br><br>
-
-            {{form.quantity.label}} {{form.quantity}} <br><br>
-
-            {{form.usercomment.label}} {{form.usercomment(size=64)}} <br><br>
-
-            {{form.submit()}}
-        </p>
-
-    </form>
+									<li class="list-group-item d-flex justify-content-between">
+											<div> {{ form.ingredient.label }}: </div>
+											<div> {{ form.ingredient }} </div>
+									</li> <br>
+									
+									<li class="list-group-item d-flex justify-content-between">
+											<div> {{ form.measure.label }}:</div>
+											<div> {{ form.measure }}</div>
+                                    </li> <br>
+                                    
+                                    <li class="list-group-item d-flex justify-content-between">
+											<div> {{form.quantity.label}}:</div>
+											<div> {{form.quantity}}</div>
+                                    </li> <br>
+                                    
+                                    <li class="list-group-item d-flex justify-content-between">
+											<div> {{form.usercomment.label}}</div>
+											<div> {{form.usercomment(size=30)}}</div>
+									</li>
+							</ul>
+								
+							<div id = "loginbody">
+								<br>{{form.submit()}}
+							</div>
+					</form>
+			</div>
+			
+			<div class="col-sm">
+		
+			</div>
+	
+			<div class="col-sm">
+		
+			</div>
+		</div>   
+</div>
 
 {% endblock %}

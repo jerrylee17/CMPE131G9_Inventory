@@ -1,14 +1,35 @@
 {% extends "nav.html" %}
 
 {% block content %}
-    <h1>Disposal Record</h1>
 
-    <div>
+<div class="container">
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
+					
+					<h2 id = "loginbody" class= "font_HighVoltage">
+							Disposal Record
+					</h2>
+			
+					<div  id = "loginbody">
 
-        {% for item in list %}
-            <li> {{ item }}  </li>
-        {% endfor %}
+							<ul class="list-group-item">
 
-    </div>
+                                    {% for item in list %}                                                       
+                                  
+									<li class="list-group-item d-flex justify-content-start">
+                                            <div> {{ item }} </div>
+                
+						            </li>
+
+                                    {% endfor %}
+							</ul>
+                    </div><br>
+			</div>
+			
+			<div class="col-sm">
+		
+			</div>
+		</div>  
+</div>
 
 {% endblock %}
