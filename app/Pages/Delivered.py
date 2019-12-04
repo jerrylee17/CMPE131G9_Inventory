@@ -33,6 +33,7 @@ def delivered():
     
     return render_template('delivered.html', form=form)
 
+    
 
 @app.route('/deliverederr', methods=["GET", "POST"])
 @login_required
