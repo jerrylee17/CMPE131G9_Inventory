@@ -26,9 +26,7 @@ def register():
         user = User(username=form.username.data)
         user.set_password(form.password.data)
         db.session.add(user)
-
         db.session.commit()
-
         flash('Congratulations, you are now a registered user!')
         return redirect('/login')
     return render_template('register.html', title='Register', form=form)
@@ -41,7 +39,7 @@ class register(FlaskForm):
     password = PasswordField("Password",validators=[DataRequired(),Length(max=10)])
     passwordVer = PasswordField("Password Verification",validators=[DataRequired(),EqualTo("password","password does not match")])
     submit = SubmitField("Register")
-
+    
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
