@@ -1,27 +1,32 @@
 h1 {
 
-    background-color: blanchedalmond;
+    background: rgba(236, 236, 236,0.5);
     text-align: center;  
-    height: 180px;
+    height: 100px;
 }
 
 #flash {
-    text-shadow: 3px 3px black;
+    background: rgba(0, 0, 0,1);
+    text-align: center;
 }
+
+@font-face { font-family: Script; 
+    src: url("Script.ttf"); }
+
+@font-face { font-family: HighVoltage; 
+    src: url("HighVoltage.ttf"); }    
+
 
 #mainheading {
 
-    color: rgb(29, 133, 129);
+    color: rgb(0, 0, 0);
 
-    font-family: Impact, sans-serif;
+    font-family: Script;
 
-    text-shadow: 5px 5px black;
+    text-shadow: 1px 1px black;
 
     font-size: 80   
-
 }
-
-
 
 #subheading {
 
@@ -39,12 +44,17 @@ h1 {
 
 #login {
 
-    color: rgb(29, 133, 129);
+    color: rgb(0, 0, 0);
 
-    font-family: Arial, sans-serif;
+    font-family:HighVoltage;
 
-    font-size: 40;
+    font-size: 30;
 
+}
+
+p1{
+
+    color: rgb(255, 255, 255);
 }
 
 
@@ -55,7 +65,7 @@ h1 {
 
     font-family: Arial, sans-serif;
 
-    font-size: 25;
+    font-size: 20;
 
 }
 
@@ -63,7 +73,7 @@ h1 {
 
 body {
 
-    background-image: url("background.jpg");
+    background-image: url("inventory.jpg");
 
     width: 100%;
 
@@ -107,4 +117,9 @@ a{
 
     color: black;
 
+}
+
+.checkbox {
+    height: 10px;
+    width: 10px;
 }
