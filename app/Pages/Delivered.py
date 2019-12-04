@@ -14,8 +14,40 @@ app.config['SECRET_KEY'] = 'some-key'
 @login_required
 def delivered():
     form = IngredientForm()
+
     if form.validate_on_submit():
-        ing = form.isel.data.replace("_", " ")
+
+        try:
+            amount = int(form.quantity.data)
+        except:
+            return redirect('/deliverederr')
+        
+        if amount <= 0:
+            return redirect('/deliverederr')
+
+        selected = form.isel.data.replace("_", " ")
+
+
+        inventory = ingredientInventory.query.all()
+
+        idNumber = 0
+        for i in inventory:
+
+            if i.ingredientName == selected:
+            
+                idNumber = i.id
+
+                break
+
+        selectedIngredient = ingredientInventory.query.get(idNumber)
+        newQuantity = selectedIngredient.quantity + amount
+        selectedIngredient.quantity = newQuantity
+        db.session.commit()
+
+        return redirect ('/dd')
+
+    """ OLD CODE:
+
         try:
             amount = int(form.quantity.data)
         except:
@@ -29,7 +61,13 @@ def delivered():
                 break
         return redirect ('/dd')
 
+        newQuantity = selectedIngredient.quantity - form.quantity.data
+
+        selectedIngredient.quantity = newQuantity
+        db.session.commit()
+    """
     return render_template('delivered.html', form=form)
+    
 @app.route('/deliverederr', methods=["GET", "POST"])
 @login_required
 def delErr():
