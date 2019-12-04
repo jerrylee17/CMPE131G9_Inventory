@@ -81,29 +81,9 @@ def delivered():
         db.session.commit()
 
         return redirect ('/dd')
-
-    """ OLD CODE:
-
-        try:
-            amount = int(form.quantity.data)
-        except:
-            return redirect('/deliverederr')
-        if amount <= 0:
-            return redirect('/deliverederr')
-        all = ingredientInventory.query.all()
-        for x in all:
-            if x.ingredientName == ing:
-                x.quantity -= amount
-                break
-        return redirect ('/dd')
-
-        newQuantity = selectedIngredient.quantity - form.quantity.data
-
-        selectedIngredient.quantity = newQuantity
-        db.session.commit()
     """
     return render_template('delivered.html', form=form)
-"""
+
 
 @app.route('/deliverederr', methods=["GET", "POST"])
 @login_required
