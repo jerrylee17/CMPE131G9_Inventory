@@ -1,6 +1,6 @@
 from app import app
 from app import db
-from flask import render_template,request
+from flask import render_template,request, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField
 from app.obj.User import User
@@ -18,12 +18,14 @@ def foodOrder():
     if order.validate_on_submit():
         dish = order.dsel.data.replace("_", " ")
         all = dishIngredientReq.query.all()
+        # load up ingredient and value
         ing, val = [], []
         for x in all:
             if x.dishName == dish:
                 ing.append(x.ingredientName2)
                 val.append(x.quantity2)
 
+        
         inv = ingredientInventory.query.all()
         flag = False
         for i in range(len(ing)):
@@ -41,9 +43,18 @@ def foodOrder():
             db.session.commit()
         
 
-        return render_template('order.html', order=order, signal=True)
+        # return render_template('order.html', order=order, signal=True)
+        return redirect('/orderdone')
         
     return render_template('order.html', order=order)
+
+@app.route('/orderdone', methods=["GET", "POST"])
+@login_required
+def doneOrder():
+    order = orderDone()
+    if order.validate_on_submit():
+        return redirect('/order')
+    return render_template("orderDone.html", order=order)
 
 class dishForm(FlaskForm):
     dishes = dishIngredientReq.query.all()
@@ -54,9 +65,11 @@ class dishForm(FlaskForm):
     df = [] #dishform
     for dish in all:
         df.append([dish.replace(" ", "_"), dish])
-    dsel = SelectField(u'Dishes', choices=df, validators=[DataRequired()])
+    dsel = SelectField(u'Dishes ', choices=df, validators=[DataRequired()])
     order = SubmitField('Order')
 
+class orderDone(FlaskForm):
+    ret = SubmitField('Order again')
 
 if __name__ == '__main__':
     app.run()

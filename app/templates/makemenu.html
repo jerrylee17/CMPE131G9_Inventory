@@ -1,19 +1,23 @@
 {% extends "nav.html" %}
 {% block content %}
 <script type="text/javascript">
-    function GetDynamicTextBox(label){
-        s = '{{ form.ingredient.label }} {{ form.ingredient }}'+
-                 '{{form.quantity.label}} {{form.quantity}}'+
-                 '{{ form.measure.label }} {{ form.measure }}'+
-                '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
+    function GetDynamicTextBox(idnum){
+        // s = '{{ form.ingredient.label }} {{ form.ingredient }}'+
+        //          '{{form.quantity.label}} {{form.quantity}}'+
+        //          '{{ form.measure.label }} {{ form.measure }}'+
+        //         '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
         
-        return s
-        // return '<input name = "DynamicTextBox" type="text" value = "' + value + '" />' +
-        //     '<input type="button" value="Remove" onclick = "RemoveTextBox(this)" />'
+        // return s
+        return `${(idnum+1).toString()}) Ingredient: <input name = "ingredient${idnum.toString()}" type="text"/>` +
+            `  Quantity: <input name = "quantity${idnum.toString()}" type="text" />` +
+            `  Measure: <input name = "measure${idnum.toString()}" type="text" />` +
+            `  <input type="button" value="Remove" onclick="RemoveTextBox(this)" />`
     }
     function AddTextBox() {
         var div = document.createElement('DIV');
-        div.innerHTML = GetDynamicTextBox("");
+        var idnum = document.getElementById("TextBoxContainer").childNodes.length;
+        // div.setAttribute("id", "div"+idnum.toString())
+        div.innerHTML = GetDynamicTextBox(idnum);
         document.getElementById("TextBoxContainer").appendChild(div);
     }
 
@@ -36,18 +40,19 @@
             document.getElementById("TextBoxContainer").innerHTML = html;
         }
     }
-    window.onload = RecreateDynamicTextboxes;
+    window.onload = RemoveAllBoxes;
 </script>
     <h1>
 		Make Dish
 	</h1>
     <body>
         <p>
-            <div>
+            <form action="" method="POST">
+                {{done.hidden_tag()}}
                 Dish Name
-                {{done.name()}}
-            </div>
-            <form id="form1" runat="server">
+                {{done.name()}} <br /> <br />
+                <i>Note: as of now, the only valid measures are unit, ml, grams</i>
+                <br /> <br />
                 <input id="btnAdd" type="button" value="Add Ingredient" onclick="AddTextBox()" />
                 <input id="btnDel" type="button" value="Remove All Ingredients" onclick="RemoveAllBoxes()">
                 <br />
@@ -56,8 +61,9 @@
                     <!--Textboxes will be added here -->
                 </div>
                 <br />
+                
+                {{done.clicky()}}
             </form>
-            {{done.clicky()}}
         </p>
     </body>
 {%endblock%}
