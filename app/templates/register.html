@@ -3,6 +3,20 @@
         New User Registration
     </h1>
     
+    {% with messages = get_flashed_messages()%}
+		{%if messages%}
+
+			<ul id = "flash2">
+
+				{%for message in messages%}
+					<font color="red">{{message}}</font>
+				{%endfor%}
+
+			</ul>
+
+		{%endif%}
+	{%endwith%}
+
     <div class = "content-section">
         <form action="" method="POST">
                 {{form.hidden_tag()}}

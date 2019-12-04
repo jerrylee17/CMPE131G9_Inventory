@@ -5,7 +5,9 @@ h1 {
     height: 180px;
 }
 
-
+#flash {
+    text-shadow: 3px 3px black;
+}
 
 #mainheading {
 
