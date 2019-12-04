@@ -6,8 +6,8 @@
 	
 	<form method="POST">
 		{{form.hidden_tag()}}
-		{{form.isel.label}}: {{form.isel}}
-		{{form.quantity.label}}: {{form.quantity}}
+		{{form.isel.label}}: {{form.isel}} <br />
+		{{form.quantity.label}}: {{form.quantity}}{{form.unit}} <br />
 		{{form.finished()}}
 	</form>
 {% endblock %}

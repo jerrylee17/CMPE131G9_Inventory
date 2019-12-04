@@ -8,13 +8,11 @@
             {{form.hidden_tag()}}
 
         <p> 
-            {{ form.ingredient.label }} {{ form.ingredient }}<br><br>
+            {{ form.ingredient.label }} {{ form.ingredient }}<br>
 
-            {{ form.measure.label }} {{ form.measure }}<br><br>
+            {{form.quantity.label}} {{form.quantity}} <br>
 
-            {{form.quantity.label}} {{form.quantity}} <br><br>
-
-            {{form.usercomment.label}} {{form.usercomment(size=64)}} <br><br>
+            {{form.usercomment.label}} {{form.usercomment(size=64)}} <br>
 
             {{form.submit()}}
         </p>
