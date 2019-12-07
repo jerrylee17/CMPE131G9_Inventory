@@ -1,45 +1,70 @@
 <html>
     <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>
         <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"></link>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/nav.css') }}"></link>
     </head>
     <head1 class = "card-transparent">
         <div class="card-block special-card" style="background-color: rgba(245, 245, 245, 0.4); ">
         <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"></link>
         </div>
     </head1>
+
+<ul class="breadcrumb" class="dropdown-menu">
+
+    <li ><a href="/">Home</a></li>
+
+    <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Menu<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li ><a href="/alldishes">&nbsp;•Current Menu</a></li> <br>
+                <li ><a href="/makemenu">&nbsp;•New Dish</a></li><br>
+                <li ><a href="/order">&nbsp;•Order Food</a></li>
+            </ul>
+    </li>
+
+    <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Ingredients<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li ><a href="/stock">&nbsp;•Stock</a></li><br>
+                <li ><a href="/delivered">&nbsp;•Input Ingredients</a></li><br>
+                <li ><a href="/dispose">&nbsp;•Dispose</a></li><br>
+                <li ><a href="/manage">&nbsp;•Disposal Record</a></li>
+            </ul>
+    </li>
+
+    <li class="ml-auto"><a href="/logout">Logout</a></li>
+
+</ul>
     <body>
-        <nav aria-label="breadcrumb" >
-            <ol class = "breadcrumb">
-                <li class="breadcrumb-item"><a href="/" style="color:rgb(0, 0, 0);">Home</a></li>
-                <li class="breadcrumb-item"><a href="/delivered" style="color:rgb(0, 0, 0);">Input Ingredients</a></li>
-                <li class="breadcrumb-item"><a href="/makemenu" style="color:rgb(0, 0, 0);">New Dish</a></li>
-                <li class="breadcrumb-item"><a href="/alldishes" style="color:rgb(0, 0, 0);">Menu</a></li> 
-                <li class="breadcrumb-item"><a href="/order" style="color:rgb(0, 0, 0);">Order Food</a></li>
-                <li class="breadcrumb-item"><a href="/stock" style="color:rgb(0, 0, 0);">Stock</a></li>
-                <li class="breadcrumb-item"><a href="/dispose" style="color:rgb(0, 0, 0);">Dispose</a></li>
-                <li class="breadcrumb-item"><a href="/manage" style="color:rgb(0, 0, 0);">Disposal Record</a></li>
-                <li class="breadcrumb-item"><a href="/logout" style="color:rgb(0, 0, 0);">Logout</a></li>
-                
-                
-            </ul> 
-        </nav>    
-            {% with messages = get_flashed_messages()%}
-                {%if messages%}
+       
+        {% with messages = get_flashed_messages()%}
+            {%if messages%}
 
-                    <ul>
+            <ul>
 
-                        {%for message in messages%}
-                        <li>{{message}}</li>
-                        {%endfor%}
+                {%for message in messages%}
+                <li>{{message}}</li>
+                {%endfor%}
 
-                    </ul>
+            </ul>
 
-                {%endif%}
-            {%endwith%}
+            {%endif%}
+        {%endwith%}
             
-            {% block content %} {% endblock %}
+        {% block content %} {% endblock %}
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>      
     </body>
 
 </html>

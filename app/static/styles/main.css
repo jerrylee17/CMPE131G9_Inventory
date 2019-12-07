@@ -49,3 +49,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+ul#menu li {
+    display:inline;
+  }

@@ -1,18 +1,36 @@
 {% extends "nav.html" %}
 {% block content %}
 
-    <h1>
-		Food Order
-	</h1>
-    <p>
-        The order has been completed
-    </p>
-    <p>
-        click below to go back
-    </p>
-    <form action = "" method="POST">
-        {{order.hidden_tag()}}
-        {{order.ret()}} 
-    </form>
-    
+<div class="container">
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
+					
+					<h2 id = "loginbody" class= "font_HighVoltage">
+                            Food Order
+                            <br>
+					</h2>
+                                       
+                    <ul class="list-group-item">
+
+                        <li class="list-group-item d-flex justify-content-center">
+                                <div> Order has been completed.</div>
+                        </li>
+                    </ul>
+                        
+                    <form action = "" method="POST" id = "loginbody">
+                            <br>
+                            {{order.hidden_tag()}}
+                            {{order.ret()}} 
+                    </form>
+			</div>
+			
+			<div class="col-sm">
+		
+			</div>
+	
+			<div class="col-sm" >
+		
+			</div>
+		</div>   
+</div>
 {%endblock%}
