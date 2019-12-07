@@ -8,14 +8,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
-    <div id="background_">
-        <h1>Input Ingredients</h1>
-         <br>
-        <p>Successfully delivered ingredients!</p>
-        <form action="" method="POST">
-            <br>
-            {{back.hidden_tag()}}
-            {{back.back()}}
-        </form>
-    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm" class="container2" id="background_">
+                
+                <h2 id = "loginbody" class= "font_HighVoltage">
+                        <br>Input Ingredients
+                </h2>
+                <br>	
+                <form method="POST"  id = "loginbody">
+                    {{back.hidden_tag()}}
+
+                        <ul class="list-group-item">
+                                <li class="list-group-item d-flex justify-content-center">
+
+                                        <div>Input was stored succesfully</div>
+            
+                                </li>
+                        </ul>
+                            
+                        <div id = "loginbody">
+                            <br>{{back.back()}}
+                        </div>
+                </form>
+        </div>
+        
+        <div class="col-sm">
+    
+        </div>
+
+        <div class="col-sm" >
+    
+        </div>
+    </div>   
+</div>
 {% endblock %}
