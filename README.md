@@ -8,7 +8,7 @@
 4. Users have different credentials that allow them to access high level features that modify database.
 5. Click on one the options displayed in the navigation bar to access a feature.
 
-# Features of the application
+# Main features
 
 **1. Login Page.**
   
@@ -26,39 +26,46 @@
 
   A main navigation bar is displayed for easy access to all features. It is located at the top of the web page application.
   
-**5. General Ingredient Inventory DataBase**
-
-  A database containing information of the stock of every single ingredient that is use in a restaurant. To check current stock, select the option "Check Ingredients" located in the navigation bar, select option "By Ingredient", and finally select the ingredient to retreive the current stock.
+**5. Input ingredient option**
   
-**6. Detailed Dish Recipe DataBase**
-
-  A database containing information of the recepy of every dish offered in the restaurant. To check the ingredients and the quantity that a dish uses, select the option"Check Ingredients" located in the navigation bar, select option "By Dish", and finally select the desired dish to retreived the ingredient and quantity information.
+  Input ingredients into the database of the website. To input ingredients, click "Input ingredients" in the navigation bar and input the ingredients from the dropdown. 
   
-**7. "Dispose Ingredient" feature**
+**6. Detailed Dish Recipe**
 
-  A feature that allows user with proper credentials to dispose products from the General Ingredient Inventory. To access this feature, select "Dispose" option located in the navigation bar,fill the form, and click remove from inventory.
+  Enter a new dish in the menu. To do this, access the dynamic webpage "Make Dish" by clicking "New Dish" in the navigation bar. When at the page, enter the dish name and add or remove ingredients accordingly. When "Create dish" is pressed, there will either be an error page that tells you where the error in the dish is or the dish will be made.
 
-**8. "Dispose Ingredient" Record DataBase**
+**7. Menu**
 
-  A database containing information of every product that was disposed, database contains:
-  User Name: which is the logged user that filled the disposal form.
-  Ingredient Name: The ingredient that was disposed.
-  Quantity: The ammount of product that was disposed.
-  Comments: The reason of the disposal.
+  View the current menu, or all of the dishes that have been inputted into the database
+
+**8. Order Food**
+
+  This feature allows users to order food to be made by the kitchen. To access this feature, select the "Order Food" option located in the navigation bar, select the dish, and click on order food button. 
+
+**9. Checking stock by dish**
+
+  This feature allows you to check the stock of every ingredient within a dish. To access this feature, select "stock" from the navigation bar and select "By Dish". Then, select the dish from the dropdown and click "Check!" Every product in the dish will be listed below, along with their product ID and their quantity. 
+
+**10. Checking stock by ingredient**
+
+  This feature allows you to check the stock of a single ingredient. To access this feature, select "stock" from the navigation bar and select "By Ingredient". Then, select the ingredient from the dropdown and click "Check!" The ID number and current stock of the ingredient will be given.  
   
-**9. Main Page**
+**11. Food Disposal**
   
-  Layout of the Login Page. It contains a main image and centers the user and password fields for easy access. 
+  This feature allows you to dispose of food that has gone bad or is potentially hazardous. To do this, select "Dispose" from the navigation bar. Select which ingredient to dispose of and enter the quantity. Then, add any comments as to why this ingredient is being thrown out. Then, click "Remove from Inventory" to complete the disposal method.
  
-**10. "Disposal Record display" feature**
+**10. Disposal Record**
 
-  A feature that allows a user with proper credentials to get a record of the disposed ingredients. To access this feature select the "Disposal Record" option located in the navigation bar and the disposal record will be displayed in the main page. 
+  This feature allows you to view the disposal record. It allows you to view if someone has disposed of food incorrectly or just messed with the database. To view the disposal record, click on "Disposal Record" in the navigation bar. 
   
 **11. "Enter a new dish" feature**
   
   A feature that allows a user with proper credentials to create a new dish. Name , ingredients, and quantities will be saved to the "detail dish recipe" database. To access this feature, select the "Enter Menu" option located in the navigation bar, enter the name of the dish, and enter the name of the ingredient, quantity, and unit measure. To create the new dish, click on "Create Dish" button.
   
-**12. "Order Food" feature**
- 
-  A feature that allow users to order food to be made by the kitchen. In the background, the application will subtract the ingredients needed for the dish from the main inventory database. To access this feature, select the "Order Food" option located in the navigation bar, select the dish, and click on order food button. 
-  
+**12. Main dashboard for users**
+
+  This is the main dashboard where everything about the website will be displayed. To access this, click on "Home".
+
+**13. Good flow of website**
+
+  Every page of this website is encoded with a "go back" button. For example, when an ingredient is inputted, the user will either be directed to an error page that explains what is wrong with the ingredient input or it will lead the user to a "delivery successful" page. Each of these pages will have a go back button that allows the user to go back to filling out the form. This page exists in each of the pages, including "Input Ingredients", "New Dish", "Order Food", and each page within "Stock". 
