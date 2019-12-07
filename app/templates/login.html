@@ -12,17 +12,21 @@
 	
 	
 	<div id = "loginbody">
+		<br>
 		<form action="" method="POST">
 			<p id = "login">Welcome</p>
 				{{form.hidden_tag()}}
 			<div id = "mainform">
 				<p> {{ form.username(placeholder="Username") }} </p>
 				<p> {{ form.password(placeholder="Password",) }} </p>
-				<p class_ = "checkbox"> {{ form.submit}}</p>
-				<br><br><br>
-				<p1 > <a href="/register" style="color:rgb(40, 0, 151);">New User</a></p1>
+				<p class_ = "checkbox"> {{ form.submit(class="btn btn-success")}}
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="/register" class="btn btn-warning" role="button">Register</a></p>
+
 			</div>
 		<form>
+
+
 	</div>
 
 	{% with messages = get_flashed_messages()%}

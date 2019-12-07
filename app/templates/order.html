@@ -1,23 +1,50 @@
 {% extends "nav.html" %}
 {% block content %}
 
-    <h1>
-		Food Order
-	</h1>
+<div class="container">
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
+					
+					<h2 id = "loginbody" class= "font_HighVoltage">
+							<br>Food Order
+					</h2>
+					<br>	
+					<form action="" method="POST"  id = "loginbody">
 
-    <form action="" method="POST" >
+							{{order.hidden_tag()}}
 
-        {{order.hidden_tag()}}
-        <p>
-            {{order.dsel.label}}{{order.dsel}}
-            {{order.order()}}
-        </p>
-        
-        {%if signal%}
-            <div class="complete">
-                <b1>Order Complete</b1>
-            </div>
-        {%endif%}
-            
-    </form>
+							<ul class="list-group-item">
+
+									<li class="list-group-item d-flex justify-content-center">
+											<div> Pick a Dish</div>
+											
+									</li> <br>
+									
+									<li class="list-group-item d-flex justify-content-center">
+                                            <div>{{order.dsel}}</div>
+											
+									</li>
+							</ul>
+								
+							<div id = "loginbody">
+								<br>{{order.order()}}
+                            </div>
+                            
+                            {%if signal%}
+                                <div class="complete">
+                                    <b1>Order Complete</b1>
+                                </div>
+                            {%endif%}
+					</form>
+			</div>
+			
+			<div class="col-sm">
+		
+			</div>
+	
+			<div class="col-sm" >
+		
+			</div>
+		</div>   
+</div>
 {%endblock%}
