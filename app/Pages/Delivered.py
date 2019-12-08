@@ -78,6 +78,7 @@ class IngredientForm(FlaskForm):
     #     elem[1]=elem[1].replace("\n", "")
     #     # dictionary of ingredient to unit
     #     dic[elem[0]]= elem[1]
+    iform.append(["other", "Other"])
         
     isel = SelectField(u'Ingredient', choices=iform, validators=[DataRequired()])
     quantity = IntegerField('Quantity', validators=[DataRequired()])

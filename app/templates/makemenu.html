@@ -8,10 +8,18 @@
         //         '<input type="button" value="Remove" onclick="RemoveTextBox(this)" />'
         
         // return s
-        return `${(idnum+1).toString()}) Ingredient: <input name = "ingredient${idnum.toString()}" type="text"/>` +
+        return `<p style="width:20px; display:inline-block; ">${(idnum+1).toString()})</p> 
+            Ingredient: <input name = "ingredient${idnum.toString()}" type="text"/>` +
             `  Quantity: <input name = "quantity${idnum.toString()}" type="text" />` +
-            `  Measure: <input name = "measure${idnum.toString()}" type="text" />` +
-            `  <input type="button" value="Remove" onclick="RemoveTextBox(this)" />`
+            // `  Measure: <input name = "measure${idnum.toString()}" type="text" />` +
+            ` Measure: <select value="measure${idnum.toString()}> 
+                <option value = " "> " " </option>
+                <option disabled selected value> -- select an option -- </option>
+                <option value = "unit">unit</option>
+                <option value = "gr">gr</option>
+                <option value = "ml">ml</option>
+                </select>` +
+            ` <input type="button" value="Remove" onclick="RemoveTextBox(this)" />`
     }
     function AddTextBox() {
         var div = document.createElement('DIV');
@@ -28,6 +36,8 @@
     
     function RemoveTextBox(div) {
         document.getElementById("TextBoxContainer").removeChild(div.parentNode);
+        // need to renumber
+        
     }
 
     function RecreateDynamicTextboxes() {
