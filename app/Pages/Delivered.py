@@ -1,11 +1,12 @@
 from app import app
 from app import db
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, flash
 from flask_wtf import FlaskForm
 from app.Pages.models import ingredientInventory
 from wtforms import StringField, IntegerField, SubmitField, FloatField, SelectField
 from wtforms.validators import DataRequired
 from flask_login import login_required
+
 
 
 app.config['SECRET_KEY'] = 'some-key'
@@ -22,6 +23,8 @@ def delivered():
     #     pass
     
     if form.validate_on_submit():
+        delivered2(form)
+        '''
         amount = form.quantity.data
         if amount <= 0:
             return redirect('/deliverederr')
@@ -37,10 +40,27 @@ def delivered():
         selectedIngredient.quantity = newQuantity
         db.session.commit()
         return redirect('/dd')
+        '''
     
     return render_template('delivered.html', form=form)
 
-    
+def delivered2(form):
+    amount = form.quantity.data
+    if amount <= 0:
+        return redirect('/deliverederr')
+    selected = form.isel.data.replace("_", " ")
+    inventory = ingredientInventory.query.all()
+    idNumber = 0
+    for i in inventory:
+        if i.ingredientName == selected:
+            idNumber = i.id
+            break
+    selectedIngredient = ingredientInventory.query.get(idNumber)
+    newQuantity = selectedIngredient.quantity + amount
+    flash('Successfully inputted ingredients')
+    selectedIngredient.quantity = newQuantity
+    db.session.commit()
+    return redirect('/dd')
 
 @app.route('/deliverederr', methods=["GET", "POST"])
 @login_required
