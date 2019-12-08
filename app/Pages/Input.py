@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'some-key'
 @app.route('/input', methods=["GET", "POST"])
 @login_required
 def input():
-    form = IngredientForm()
+    form = InputForm()
     if form.validate_on_submit():
         input2(form)
         '''
@@ -74,7 +74,7 @@ def inputDone():
 class goBack(FlaskForm):
     back = SubmitField('Go Back')
 
-class IngredientForm(FlaskForm):
+class InputForm(FlaskForm):
     ingredients = ingredientInventory.query.all()
     all = []
     for ingredient in ingredients:

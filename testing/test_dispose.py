@@ -23,8 +23,7 @@ def test_dispose():
 
             #create and fill out form
             form = Dispose.disposal()
-            form.submit()
-            form.ingredient.data = 'Angel Hair Pasta'
+            form.ingredient.data = ingredientName'
             form.quantity.data = amountToBeDisposed
             form.usercomment.data = 'dispose'
 
