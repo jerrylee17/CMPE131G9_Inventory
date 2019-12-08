@@ -13,10 +13,11 @@ app.config['SECRET_KEY'] = 'some-key'
 
 @app.route('/input', methods=["GET", "POST"])
 @login_required
-def input():
+def inputing():
+    
     form = InputForm()
     if form.validate_on_submit():
-        input2(form)
+        return input2(form)
         '''
         amount = form.quantity.data
         if amount <= 0:
@@ -42,6 +43,15 @@ def input2(form):
     if amount <= 0:
         return redirect('/inputerr')
     selected = form.isel.data.replace("_", " ")
+    if selected == "Other":
+        #take input from textbox
+        c = request.form["selingr"]
+        measure = request.form["selm"]
+        if c  == "":
+            flash('Please enter an ingredient')
+            return redirect('/inputd')
+        newIngre = ingredientInventory(ingredientName=c, quantity=amount, unitMeasure=measure)
+        return redirect('/inputd')
     inventory = ingredientInventory.query.all()
     idNumber = 0
     for i in inventory:
@@ -50,7 +60,7 @@ def input2(form):
             break
     selectedIngredient = ingredientInventory.query.get(idNumber)
     newQuantity = selectedIngredient.quantity + amount
-    flash('Successfully inputted ingredients')
+    # flash('Successfully inputted ingredients')
     selectedIngredient.quantity = newQuantity
     db.session.commit()
     return redirect('/inputd')
@@ -61,7 +71,7 @@ def inputErr():
     back = goBack()
     if back.validate_on_submit():
         return redirect('/input')
-    return render_template('inputerr.html', back=back)
+    return render_template('delerr.html', back=back)
 
 @app.route('/inputd', methods=["GET", "POST"])
 @login_required
@@ -91,6 +101,7 @@ class InputForm(FlaskForm):
     #     elem[1]=elem[1].replace("\n", "")
     #     # dictionary of ingredient to unit
     #     dic[elem[0]]= elem[1]
+    iform.append(["Other", "Other"])
         
     isel = SelectField(u'Ingredient', choices=iform, validators=[DataRequired()])
     quantity = IntegerField('Quantity', validators=[DataRequired()])
