@@ -8,10 +8,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asd'
 
 
-def test_dispose():
+def test_delivered():
     with app.app_context():
         with app.test_request_context():
-            ingredientName = 'Angel Hair Pasta'
+            ingredientName = 'Baking Powder'
             idNumber = 0
             for i in ingredientInventory.query.all():
                 if i.ingredientName == ingredientName:
@@ -19,13 +19,13 @@ def test_dispose():
                     break
             selectedIngredient = ingredientInventory.query.get(idNumber)
             initQuantity = selectedIngredient.quantity
-            amountToBeDisposed = 500
+            amountToBeAdded = 500
 
             #create and fill out form
-            form = Dispose.disposal()
+            form = Delivered.de
             form.submit()
             form.ingredient.data = 'Angel Hair Pasta'
-            form.quantity.data = amountToBeDisposed
+            form.quantity.data = amountToBeAdded
             form.usercomment.data = 'dispose'
 
             #run the submission method
@@ -36,6 +36,6 @@ def test_dispose():
             selectedIngredient.quantity = initQuantity
             db.session.commit()
 
-            assert finalQuantity == initQuantity-amountToBeDisposed
+            assert finalQuantity == initQuantity-amountToBeAdded
 
 

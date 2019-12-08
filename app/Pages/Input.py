@@ -11,16 +11,16 @@ from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
-@app.route('/delivered', methods=["GET", "POST"])
+@app.route('/input', methods=["GET", "POST"])
 @login_required
-def delivered():
+def input():
     form = IngredientForm()
     if form.validate_on_submit():
-        delivered2(form)
+        input2(form)
         '''
         amount = form.quantity.data
         if amount <= 0:
-            return redirect('/deliverederr')
+            return redirect('/inputerr')
         selected = form.isel.data.replace("_", " ")
         inventory = ingredientInventory.query.all()
         idNumber = 0
@@ -35,12 +35,12 @@ def delivered():
         return redirect('/dd')
         '''
     
-    return render_template('delivered.html', form=form)
+    return render_template('input.html', form=form)
 
-def delivered2(form):
+def input2(form):
     amount = form.quantity.data
     if amount <= 0:
-        return redirect('/deliverederr')
+        return redirect('/inputerr')
     selected = form.isel.data.replace("_", " ")
     inventory = ingredientInventory.query.all()
     idNumber = 0
@@ -53,22 +53,22 @@ def delivered2(form):
     flash('Successfully inputted ingredients')
     selectedIngredient.quantity = newQuantity
     db.session.commit()
-    return redirect('/dd')
+    return redirect('/inputd')
 
-@app.route('/deliverederr', methods=["GET", "POST"])
+@app.route('/inputerr', methods=["GET", "POST"])
 @login_required
-def delErr():
+def inputErr():
     back = goBack()
     if back.validate_on_submit():
-        return redirect('/delivered')
-    return render_template('delerr.html', back=back)
+        return redirect('/input')
+    return render_template('inputerr.html', back=back)
 
-@app.route('/dd', methods=["GET", "POST"])
+@app.route('/inputd', methods=["GET", "POST"])
 @login_required
-def deliveredDone():
+def inputDone():
     back = goBack()
     if back.validate_on_submit():
-        return redirect('/delivered')
+        return redirect('/input')
     return render_template('dd.html', back=back)
 
 class goBack(FlaskForm):
@@ -94,7 +94,7 @@ class IngredientForm(FlaskForm):
         
     isel = SelectField(u'Ingredient', choices=iform, validators=[DataRequired()])
     quantity = IntegerField('Quantity', validators=[DataRequired()])
-    finished = SubmitField('Deliver ingredients')
+    finished = SubmitField('Input ingredients')
 
 if __name__ == '__main__':
     app.run(debug=True)
