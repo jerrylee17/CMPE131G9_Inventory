@@ -12,12 +12,11 @@
             Ingredient: <input name = "ingredient${idnum.toString()}" type="text"/>` +
             `  Quantity: <input name = "quantity${idnum.toString()}" type="text" />` +
             // `  Measure: <input name = "measure${idnum.toString()}" type="text" />` +
-            ` Measure: <select value="measure${idnum.toString()}> 
-                <option value = " "> " " </option>
+            ` Measure: <select name="measure${idnum.toString()}""> 
                 <option disabled selected value> -- select an option -- </option>
-                <option value = "unit">unit</option>
-                <option value = "gr">gr</option>
-                <option value = "ml">ml</option>
+                <option value="unit">unit</option>
+                <option value="gr">gr</option>
+                <option value="ml">ml</option>
                 </select>` +
             ` <input type="button" value="Remove" onclick="RemoveTextBox(this)" />`
     }

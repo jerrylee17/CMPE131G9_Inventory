@@ -17,7 +17,6 @@
 			<br>	
 			<form method="POST"  id = "loginbody">
 				{{form.hidden_tag()}}
-
 				<ul class="list-group-item">
 					<li class="list-group-item d-flex justify-content-between">
 							<div> {{form.isel.label}}</div>
@@ -36,14 +35,13 @@
 							}
 						}
 						function getDynamicTextBox(value){
-							return 'New ingredient: <input name = "selingr" type="text" value = "' + value + '" />' +
+							return 'New ingredient: <input name="selingr" type="text"/>' +
 							` Measure: 
-								<select value="selm> 
-									<option value = " "> " " </option>
+								<select name="selm"> 
 									<option disabled selected value> -- select an option -- </option>
-									<option value = "unit">unit</option>
-									<option value = "gr">gr</option>
-									<option value = "ml">ml</option>
+									<option value="unit">unit</option>
+									<option value="gr">gr</option>
+									<option value="ml">ml</option>
 								</select>`
 						}
 						function AddTextBox(){

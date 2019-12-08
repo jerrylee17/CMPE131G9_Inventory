@@ -11,10 +11,22 @@ from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
+def getChoices():
+    dishes = dishIngredientReq.query.all()
+    all = []
+    for dish in dishes:
+        all.append(dish.dishName)
+    all = sorted(list(set(all))) #remove duplicates and sort
+    df = [] #dishform
+    for dish in all:
+        df.append([dish.replace(" ", "_"), dish])
+    return df
+
 @app.route('/order',methods = ["GET","POST"])
 @login_required
 def foodOrder():
     order = dishForm()
+    order.dsel.choices = getChoices()
     if order.validate_on_submit():
         dish = order.dsel.data.replace("_", " ")
         all = dishIngredientReq.query.all()
