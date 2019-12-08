@@ -23,7 +23,7 @@ def test_dispose():
 
             #create and fill out form
             form = Dispose.disposal()
-            form.ingredient.data = ingredientName'
+            form.ingredient.data = ingredientName
             form.quantity.data = amountToBeDisposed
             form.usercomment.data = 'dispose'
 
