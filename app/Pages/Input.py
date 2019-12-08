@@ -10,12 +10,33 @@ from flask_login import login_required
 
 
 app.config['SECRET_KEY'] = 'some-key'
+def getChoices():
+    ingredients = ingredientInventory.query.all()
+    all = []
+    for ingredient in ingredients:
+        all.append([ingredient.ingredientName, ingredient.unitMeasure])
+    # list of all ingredients
+    all.sort(key=lambda x:x[0])
+    iform = []
+    for ing in all:
+        iform.append([ing[0].replace(" ", "_"), ing[0]+" ( "+ing[1]+ ")"])
+    # iform.append(["other", "other"])
+    # dic = {}
+    # # clean up units inside all
+    # for elem in all:
+    #     elem[1]=elem[1].replace("\n", "")
+    #     # dictionary of ingredient to unit
+    #     dic[elem[0]]= elem[1]
+    iform.append(["Other", "Other"])
+        
+    return iform
 
 @app.route('/input', methods=["GET", "POST"])
 @login_required
 def inputing():
     
     form = InputForm()
+    form.isel.choices = getChoices()
     if form.validate_on_submit():
         return input2(form)
         '''
@@ -45,12 +66,16 @@ def input2(form):
     selected = form.isel.data.replace("_", " ")
     if selected == "Other":
         #take input from textbox
-        c = request.form["selingr"]
-        measure = request.form["selm"]
+        c = request.form.get('selingr')
+        measure = request.form.get('selm')+ " "
+        print(str(measure))
         if c  == "":
             flash('Please enter an ingredient')
             return redirect('/inputd')
         newIngre = ingredientInventory(ingredientName=c, quantity=amount, unitMeasure=measure)
+        print(newIngre)
+        db.session.add(newIngre)
+        db.session.commit()
         return redirect('/inputd')
     inventory = ingredientInventory.query.all()
     idNumber = 0
@@ -90,7 +115,7 @@ class InputForm(FlaskForm):
     for ingredient in ingredients:
         all.append([ingredient.ingredientName, ingredient.unitMeasure])
     # list of all ingredients
-    # all = sorted(list(set(all)))
+    all.sort(key=lambda x:x[0])
     iform = []
     for ing in all:
         iform.append([ing[0].replace(" ", "_"), ing[0]+" ( "+ing[1]+ ")"])
@@ -102,10 +127,12 @@ class InputForm(FlaskForm):
     #     # dictionary of ingredient to unit
     #     dic[elem[0]]= elem[1]
     iform.append(["Other", "Other"])
-        
+    # iform = getChoices()
     isel = SelectField(u'Ingredient', choices=iform, validators=[DataRequired()])
     quantity = IntegerField('Quantity', validators=[DataRequired()])
     finished = SubmitField('Input ingredients')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
