@@ -19,6 +19,10 @@ def dispose():
     if form.validate_on_submit():
         selected = form.ingredient.data.replace("_", " ")
         inventory = ingredientInventory.query.all()
+
+        dispose2(selected, inventory, form)
+
+        '''
         idNumber = 0
         for i in inventory:
             if i.ingredientName == selected:
@@ -39,8 +43,31 @@ def dispose():
         db.session.commit()
         flash("Removal successfull")
         return redirect("/dispose")
+        '''
         #elif(selectedIngredient.quantity != form.measure)
     return render_template('dispose.html',form=form)
+
+def dispose2(ing, inv, form):
+    idNumber = 0
+    for i in inv:
+        if i.ingredientName == ing:
+            idNumber = i.id
+            break
+    selectedIngredient = ingredientInventory.query.get(idNumber)
+    if form.quantity.data <= 0:
+        flash("Please enter something above 0!")
+        return redirect("/dispose")
+    elif form.quantity.data>selectedIngredient.quantity:
+        flash("Available stock is less than que quantity to be disposed")
+        return redirect("/dispose")
+    newQuantity = selectedIngredient.quantity - form.quantity.data
+    selectedIngredient.quantity = newQuantity
+    db.session.commit()
+    temp = disposalRecord(userName = "Logged User",ingredientName3=ing,quantity3=form.quantity.data,unitMeasure3=form.object2,comment=form.usercomment.data)
+    db.session.add(temp)
+    db.session.commit()
+    flash("Removal successfull")
+    return redirect("/dispose")
 
 class disposal(FlaskForm):
     inventoryTemp = ingredientInventory.query.all()
