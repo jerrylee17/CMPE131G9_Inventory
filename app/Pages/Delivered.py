@@ -15,13 +15,6 @@ app.config['SECRET_KEY'] = 'some-key'
 @login_required
 def delivered():
     form = IngredientForm()
-    # print(form.dic)
-    # unit = "hi"
-    # try:
-    #     unit = form.dic[form.isel.data]
-    # except:
-    #     pass
-    
     if form.validate_on_submit():
         delivered2(form)
         '''

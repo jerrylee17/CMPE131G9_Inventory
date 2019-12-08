@@ -12,42 +12,43 @@ from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
+
 @app.route('/dispose',methods=["GET","POST"])
 @login_required
 def dispose():
     form = disposal()
     if form.validate_on_submit():
-        selected = form.ingredient.data.replace("_", " ")
-        inventory = ingredientInventory.query.all()
+        dispose2(form)
 
-        dispose2(selected, inventory, form)
-
-        '''
-        idNumber = 0
-        for i in inventory:
-            if i.ingredientName == selected:
-                idNumber = i.id
-                break
-        selectedIngredient = ingredientInventory.query.get(idNumber)
-        if form.quantity.data <= 0:
-            flash("Please enter something above 0!")
-            return redirect("/dispose")
-        elif form.quantity.data>selectedIngredient.quantity:
-            flash("Available stock is less than que quantity to be disposed")
-            return redirect("/dispose")
-        newQuantity = selectedIngredient.quantity - form.quantity.data
-        selectedIngredient.quantity = newQuantity
-        db.session.commit()
-        temp = disposalRecord(userName = "Logged User",ingredientName3=selected,quantity3=form.quantity.data,unitMeasure3=form.object2,comment=form.usercomment.data)
-        db.session.add(temp)
-        db.session.commit()
-        flash("Removal successfull")
+    '''
+    idNumber = 0
+    for i in inventory:
+        if i.ingredientName == selected:
+            idNumber = i.id
+            break
+    selectedIngredient = ingredientInventory.query.get(idNumber)
+    if form.quantity.data <= 0:
+        flash("Please enter something above 0!")
         return redirect("/dispose")
-        '''
+    elif form.quantity.data>selectedIngredient.quantity:
+        flash("Available stock is less than que quantity to be disposed")
+        return redirect("/dispose")
+    newQuantity = selectedIngredient.quantity - form.quantity.data
+    selectedIngredient.quantity = newQuantity
+    db.session.commit()
+    temp = disposalRecord(userName = "Logged User",ingredientName3=selected,quantity3=form.quantity.data,unitMeasure3=form.object2,comment=form.usercomment.data)
+    db.session.add(temp)
+    db.session.commit()
+    flash("Removal successfull")
+    return redirect("/dispose")
+    '''
         #elif(selectedIngredient.quantity != form.measure)
     return render_template('dispose.html',form=form)
 
-def dispose2(ing, inv, form):
+def dispose2(form):
+    ing = form.ingredient.data.replace("_", " ")
+    inv = ingredientInventory.query.all()
+
     idNumber = 0
     for i in inv:
         if i.ingredientName == ing:

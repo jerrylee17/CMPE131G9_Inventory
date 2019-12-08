@@ -32,7 +32,7 @@ def test_dispose():
             Dispose.dispose2(form)
 
             finalQuantity = selectedIngredient.quantity
-
+            
             selectedIngredient.quantity = initQuantity
             db.session.commit()
 
