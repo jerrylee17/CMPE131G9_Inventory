@@ -1,18 +1,39 @@
 {% extends "nav.html" %}
 
 {% block content %}
-    <h1>Stock</h1>
-    
-    <form action="" method="POST">
 
-            {{form.hidden_tag()}}
+<div class="container">
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
+					
+					<h2 id = "loginbody" class= "font_HighVoltage">
+							<br>Check Stock
+					</h2>
+					<br>	
+					<form action="" method="POST"  id = "loginbody">
 
-        <p>
-            {{form.submit1(class="btn btn-primary")}}
-            {{form.submit2()}}
+							{{form.hidden_tag()}}
 
-        </p>
+							<ul class="list-group-item" style="list-style-type: none;">
 
-    </form>
+									<li >
+											<div> {{form.submit1(class="btn-block btn btn btn-info")}}</div>
+											
+									</li> <br>
+									
+									<li >
+                                            <div>{{form.submit2(class="btn-block btn btn btn-info")}}</div>
+											
+									</li>
+							</ul>
+					</form>
+			</div>
+			
+			<div class="col-sm">
+		
+			</div>
+	
+		</div>   
+</div>
 
 {% endblock %}
