@@ -13,17 +13,14 @@ from flask_login import login_required
 @app.route('/manage')
 @login_required
 def manage():
-
+    """
+    Disposal record page
+    """
     disp = disposalRecord.query.all()
-
     list = []
-
     for i in disp:
-
         record = " "+str(i.id)+". "+i.ingredientName3+" "+str(i.quantity3)+i.unitMeasure3+"  Comment:"+i.comment
-
         list.append(record)
-        
     return render_template('manage.html',list=list)
 
 # if __name__ == '__main__':

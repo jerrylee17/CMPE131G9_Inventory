@@ -12,6 +12,12 @@ from flask_login import login_required
 app.config['SECRET_KEY'] = 'some-key'
 
 def getChoices():
+    """ 
+    Get updated list of dishes
+    
+    Returns: 
+        List of tuples for a selectfield with updated ingredients
+    """
     dishes = dishIngredientReq.query.all()
     all = []
     for dish in dishes:
@@ -25,6 +31,9 @@ def getChoices():
 @app.route('/order',methods = ["GET","POST"])
 @login_required
 def foodOrder():
+    """
+    Food order page
+    """
     order = dishForm()
     order.dsel.choices = getChoices()
     if order.validate_on_submit():
@@ -61,6 +70,9 @@ def foodOrder():
 @app.route('/ordererr', methods=["GET", "POST"])
 @login_required
 def ordErr():
+    """
+    Error with Food Order page
+    """
     back = goBack()
     if back.validate_on_submit():
         return redirect('/order')
@@ -69,15 +81,24 @@ def ordErr():
 @app.route('/orderdone', methods=["GET", "POST"])
 @login_required
 def doneOrder():
+    """
+    Finished with order page
+    """
     order = orderDone()
     if order.validate_on_submit():
         return redirect('/order')
     return render_template("orderDone.html", order=order)
 
 class goBack(FlaskForm):
+    """
+    Form for going to the previous page
+    """
     back = SubmitField('Go Back')
 
 class dishForm(FlaskForm):
+    """
+    Ordering dish form
+    """
     dishes = dishIngredientReq.query.all()
     all = []
     for dish in dishes:
@@ -90,6 +111,9 @@ class dishForm(FlaskForm):
     order = SubmitField('Order')
 
 class orderDone(FlaskForm):
+    """
+    Finished order form
+    """
     ret = SubmitField('Order again')
 
 # if __name__ == '__main__':
