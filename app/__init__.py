@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 
 login = LoginManager(app)
 
-from app.Pages import Delivered
+from app.Pages import Input
 from app.Pages import Dispose
 from app.Pages import FoodOrder
 from app.Pages import Login

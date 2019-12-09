@@ -46,5 +46,5 @@ class register(FlaskForm):
             flash('Please use a different username.')
             raise ValidationError('Please use a different username.')
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()

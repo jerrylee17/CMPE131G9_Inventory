@@ -12,35 +12,74 @@ from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
+def getChoices():
+    inventoryTemp = ingredientInventory.query.all()
+    generalList=[]
+    object2 = ""
+    for item in inventoryTemp:
+        object1 = item.ingredientName
+        object2 = item.unitMeasure
+        finalstr = str(object1) + " ( " + str(object2) + " ) "
+        generalList.append([object1.replace(" ", "_"), finalstr])
+    return generalList
+
 @app.route('/dispose',methods=["GET","POST"])
 @login_required
 def dispose():
     form = disposal()
+    form.ingredient.choices = getChoices()
     if form.validate_on_submit():
-        selected = form.ingredient.data.replace("_", " ")
-        inventory = ingredientInventory.query.all()
-        idNumber = 0
-        for i in inventory:
-            if i.ingredientName == selected:
-                idNumber = i.id
-                break
-        selectedIngredient = ingredientInventory.query.get(idNumber)
-        if form.quantity.data <= 0:
-            flash("Please enter something above 0!")
-            return redirect("/dispose")
-        elif form.quantity.data>selectedIngredient.quantity:
-            flash("Available stock is less than que quantity to be disposed")
-            return redirect("/dispose")
-        newQuantity = selectedIngredient.quantity - form.quantity.data
-        selectedIngredient.quantity = newQuantity
-        db.session.commit()
-        temp = disposalRecord(userName = "Logged User",ingredientName3=selected,quantity3=form.quantity.data,unitMeasure3=form.object2,comment=form.usercomment.data)
-        db.session.add(temp)
-        db.session.commit()
-        flash("Removal successfull")
+        dispose2(form)
+
+    '''
+    idNumber = 0
+    for i in inventory:
+        if i.ingredientName == selected:
+            idNumber = i.id
+            break
+    selectedIngredient = ingredientInventory.query.get(idNumber)
+    if form.quantity.data <= 0:
+        flash("Please enter something above 0!")
         return redirect("/dispose")
+    elif form.quantity.data>selectedIngredient.quantity:
+        flash("Available stock is less than que quantity to be disposed")
+        return redirect("/dispose")
+    newQuantity = selectedIngredient.quantity - form.quantity.data
+    selectedIngredient.quantity = newQuantity
+    db.session.commit()
+    temp = disposalRecord(userName = "Logged User",ingredientName3=selected,quantity3=form.quantity.data,unitMeasure3=form.object2,comment=form.usercomment.data)
+    db.session.add(temp)
+    db.session.commit()
+    flash("Removal successfull")
+    return redirect("/dispose")
+    '''
         #elif(selectedIngredient.quantity != form.measure)
     return render_template('dispose.html',form=form)
+
+def dispose2(form):
+    ing = form.ingredient.data.replace("_", " ")
+    inv = ingredientInventory.query.all()
+
+    idNumber = 0
+    for i in inv:
+        if i.ingredientName == ing:
+            idNumber = i.id
+            break
+    selectedIngredient = ingredientInventory.query.get(idNumber)
+    if form.quantity.data <= 0:
+        flash("Please enter something above 0!")
+        return redirect("/dispose")
+    elif form.quantity.data>selectedIngredient.quantity:
+        flash("Available stock is less than que quantity to be disposed")
+        return redirect("/dispose")
+    newQuantity = selectedIngredient.quantity - form.quantity.data
+    selectedIngredient.quantity = newQuantity
+    db.session.commit()
+    temp = disposalRecord(userName = "Logged User",ingredientName3=ing,quantity3=form.quantity.data,unitMeasure3=form.object2,comment=form.usercomment.data)
+    db.session.add(temp)
+    db.session.commit()
+    flash("Removal successfull")
+    return redirect("/dispose")
 
 class disposal(FlaskForm):
     inventoryTemp = ingredientInventory.query.all()
@@ -57,5 +96,5 @@ class disposal(FlaskForm):
     usercomment = StringField('Comments', validators=[DataRequired()])                                          
     submit = SubmitField('Remove From Inventory')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
