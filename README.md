@@ -8,6 +8,10 @@
 4. Users have different credentials that allow them to access high level features that modify database.
 5. Click on one the options displayed in the navigation bar to access a feature.
 
+# Testing:
+  All tests are located in the testing folder, which is in the main repository folder.
+  They can be run by using the command pytest in the terminal
+
 # Main features
 
 **1. Login Page.**
