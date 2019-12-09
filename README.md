@@ -33,6 +33,7 @@ export FLASK_APP=app
 # Information
 
 Github repository: https://github.com/jerrylee17/CMPE131G9_Inventory
+
 Website deployment: https://masterkitchen.herokuapp.com/main
 
 # Main features
