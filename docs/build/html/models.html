@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Models &#8212; CMPE131G9_Inventory 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Functions" href="functions.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="models">
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Models<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-app.Pages.models"></span><dl class="class">
+<dt id="app.Pages.models.User">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.models.</code><code class="sig-name descname">User</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.models.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Database of a user</p>
+<dl>
+<dt>Columns:</dt><dd><p>username(string): Username</p>
+<p>password_hash(string): Hash of password</p>
+</dd>
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>set_password(self, password):</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>password(string): Given password of user</p>
+</dd>
+</dl>
+</dd>
+<dt>check_password(self, password):</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>password(string): Check if the password given is corret at login</p>
+</dd>
+<dt>Returns:</dt><dd><p>Boolean: If the given password matches the password in the one in the database</p>
+</dd>
+</dl>
+</dd>
+<dt>__repr__(self):</dt><dd><dl class="simple">
+<dt>Returns:</dt><dd><p>&lt;User {username}&gt;</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.models.dishIngredientReq">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.models.</code><code class="sig-name descname">dishIngredientReq</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.models.dishIngredientReq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Database of dishes</p>
+<dl>
+<dt>Columns:</dt><dd><p>dishName(string): Name of dish</p>
+<p>ingredientName2(string): Name of ingredient</p>
+<p>quantity2(float): Quantity of ingredient</p>
+<p>unitMeasure2(string): Unit of measure for the ingredient</p>
+</dd>
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>__repr__(self):</dt><dd><dl class="simple">
+<dt>Returns:</dt><dd><p>‘&lt;dishIngredientReq: {dishName}, {ingredientName2}, {quantity2}, unitMeasure2}&gt;</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.models.disposalRecord">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.models.</code><code class="sig-name descname">disposalRecord</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.models.disposalRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Database of disposal records</p>
+<dl>
+<dt>Columns:</dt><dd><p>userName(string): User that performed the action</p>
+<p>ingredientNam3(string): Name of ingredient</p>
+<p>quantity3(float): Quantity of ingredient</p>
+<p>unitMeasure3(string): Unit of measure for the ingredient</p>
+<p>comment(string): Comment given for the disposal reason</p>
+</dd>
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>__repr__(self):</dt><dd><dl class="simple">
+<dt>Returns:</dt><dd><p>‘&lt;ingredientInventory:{userName}, {ingredientName3}, {quantity3}, unitMeasure3}, {comment}&gt;</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.models.ingredientInventory">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.models.</code><code class="sig-name descname">ingredientInventory</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.models.ingredientInventory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Database of ingredients</p>
+<dl>
+<dt>Columns:</dt><dd><p>ingredientName(string): Name of ingredient</p>
+<p>quantity(float): Quantity of ingredient</p>
+<p>unitMeasure(string): Unit of measure for the ingredient</p>
+</dd>
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>__repr__(self):</dt><dd><dl class="simple">
+<dt>Returns:</dt><dd><p>‘&lt;ingredientInventory:{ingredientName}, {quantity}, unitMeasure}&gt;</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">CMPE131G9_Inventory</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">How to use masterkitchen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Models</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="functions.html" title="previous chapter">Functions</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Jerry Lee.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

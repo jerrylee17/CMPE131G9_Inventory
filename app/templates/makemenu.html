@@ -9,16 +9,16 @@
         
         // return s
         return `<p style="width:20px; display:inline-block; ">${(idnum+1).toString()})</p> 
-            Ingredient: <input name = "ingredient${idnum.toString()}" type="text"/>` +
-            `  Quantity: <input name = "quantity${idnum.toString()}" type="text" />` +
+            Ingredient: \xa0\xa0<input name = "ingredient${idnum.toString()}" type="text"/>` +`\xa0\xa0\xa0\xa0\xa0`+
+            `  Quantity: \xa0\xa0<input name = "quantity${idnum.toString()}" type="text" />` +`\xa0\xa0\xa0\xa0\xa0`+
             // `  Measure: <input name = "measure${idnum.toString()}" type="text" />` +
-            ` Measure: <select name="measure${idnum.toString()}""> 
+            ` Measure: \xa0\xa0<select name="measure${idnum.toString()}""> 
                 <option disabled selected value> -- select an option -- </option>
                 <option value="unit">unit</option>
                 <option value="gr">gr</option>
                 <option value="ml">ml</option>
-                </select>` +
-            ` <input type="button" value="Remove" onclick="RemoveTextBox(this)" />`
+                </select>` + `\xa0\xa0\xa0\xa0`+
+            ` <input type="button" class="btn btn-warning" value="Remove" onclick="RemoveTextBox(this)" />`+`\n`
     }
     function AddTextBox() {
         var div = document.createElement('DIV');
@@ -50,28 +50,47 @@
     }
     window.onload = RemoveAllBoxes;
 </script>
-    <h1>
-		Make Dish
-	</h1>
-    <body>
-        <p>
-            <form action="" method="POST">
-                {{done.hidden_tag()}}
-                Dish Name
-                {{done.name()}} <br /> <br />
-                <i>Note: as of now, the only valid measures are unit, ml, gr</i>
-                <br /> <br />
-                <input id="btnAdd" type="button" value="Add Ingredient" onclick="AddTextBox()" />
-                <input id="btnDel" type="button" value="Remove All Ingredients" onclick="RemoveAllBoxes()">
-                <br />
-                <br />
-                <div id="TextBoxContainer">
-                    <!--Textboxes will be added here -->
-                </div>
-                <br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm" class="container2" id="background_">
                 
-                {{done.clicky()}}
-            </form>
-        </p>
-    </body>
+                <h2 id = "loginbody" class= "font_HighVoltage">
+                        New Dish
+                </h2>
+                	
+                <form method="POST"  id = "loginbody">
+
+                        {{done.hidden_tag()}}
+
+                        <ul class="list-group-item">
+
+                                <li class="list-group-item d-flex justify-content-around">
+                                        <div style="font-weight: bolder;"> Dish Name:</div>
+                
+                                        <div> {{done.name(size=60)}} </div>
+                                </li> <br>
+                                <i>Valid unit measures are: ml, gr and unit.</i>
+                                <li class="list-group-item d-flex justify-content-between">
+
+                                        <input id="btnAdd" type="button" class="btn btn-primary" value="Add Ingredient"  onclick="AddTextBox()" />
+                                        <input id="btnDel" type="button" class="btn btn-danger" value="Remove All Ingredients" onclick="RemoveAllBoxes()">
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+
+                                    <div id="TextBoxContainer">
+                                        <!--Textboxes will be added here -->
+                                        
+                                    </div> 
+                                </li><br> 
+                        </ul>
+                            
+                        <div id = "loginbody">
+                            {{done.clicky(class="btn btn-success")}}
+                        </div>
+                </form>
+        </div>
+    </div>   
+</div>
 {%endblock%}

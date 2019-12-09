@@ -19,6 +19,9 @@ app.config['SECRET_KEY'] = 'some-key'
 @app.route('/register',methods = ["GET","POST"])
 
 def register():
+    """
+    Registration page
+    """
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = register()
@@ -32,7 +35,9 @@ def register():
     return render_template('register.html', title='Register', form=form)
     
 class register(FlaskForm):
-
+    """
+    Registration form
+    """
     #print("entered registration")
     
     username = StringField("Username",validators=[DataRequired(),Length(max=10)])

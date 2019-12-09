@@ -22,10 +22,54 @@
         <div class="col-sm">
 
         </div>
-        <div class="col-sm">
 
+        <div class="col-sm" class="container2">
+					
+                <h2 id = "loginbody" class= "font_HighVoltage" >
+                        <br>   
+                        <quik  >Quick Access</quik>
+                </h2>
+
+                <form method="POST"  id = "loginbody">
+                        {{form.hidden_tag()}}
+
+                        <ul class="list-group-item" style="list-style-type: none;">
+
+                                <li >
+                                        <div> {{form.currentMenu(class="btn-block btn btn btn-dark")}}
+                                </li> <br>
+
+                                <li >
+                                        <div> {{ form.newDish(class="btn-block btn btn btn-dark")}}
+                                </li> <br>
+
+                                <li >
+                                        <div> {{form.stock(class="btn-block btn btn btn-dark")}}
+                                </li> <br>
+
+                                <li >
+                                        <div> {{form.dispose(class="btn-block btn btn btn-dark")}}
+                                </li>
+                                                                
+                        </ul>
+                </form>
         </div>
     </div>   
 </div>
+
+<footer id="footer">
+
+        <p class="font_HighVoltage" style="font-weight: bold;">    
+                About Us
+        </p>
+
+        <p style="font-weight: 520;" style="opacity: 0.8;">    
+        "Master Kitchen Inventory" is an easy-to-use restaurant<br>
+        inventory management software, designed to streamline
+        back-of-house and front of-the-house<br>
+        restaurant inventory operations.
+        </p>
+
+</footer>
 
 {% endblock %}
