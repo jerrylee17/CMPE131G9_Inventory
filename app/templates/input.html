@@ -8,24 +8,8 @@
 </head>
 
 <div class="container">
-	<div class="row">
-		<div class="col-sm" class="container2" id="background_">
-				
-			<h2 id = "loginbody" class= "font_HighVoltage">
-					<br>Input Ingredients
-			</h2>
-			<br>	
-			<form method="POST"  id = "loginbody">
-				{{form.hidden_tag()}}
-				<ul class="list-group-item">
-					<li class="list-group-item d-flex justify-content-between">
-							<div> {{form.isel.label}}</div>
-							<div> &nbsp;:&nbsp;&nbsp;&nbsp;</div>
-							<div> {{form.isel}} </div>
-					</li> <br>
-					<script type="text/javascript">
-						let ing = document.getElementById('isel')
-					
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
 						ing.onchange = function() {
 							sel = ing.value;
 							if (sel == 'Other'){
@@ -69,16 +53,14 @@
 				</div>
 			</form>
 			
-		</div>
+			<div class="col-sm">
 		
-		<div class="col-sm">
+			</div>
 	
-		</div>
-
-		<div class="col-sm">
-	
-		</div>
-	</div>   
+			<div class="col-sm">
+		
+			</div>
+		</div>   
 </div>
 
 	

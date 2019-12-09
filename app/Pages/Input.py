@@ -117,7 +117,5 @@ class InputForm(FlaskForm):
     quantity = IntegerField('Quantity', validators=[DataRequired()])
     finished = SubmitField('Input ingredients')
 
-
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)

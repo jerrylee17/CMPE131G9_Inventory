@@ -36,6 +36,10 @@ Github repository: https://github.com/jerrylee17/CMPE131G9_Inventory
 
 Website deployment: https://masterkitchen.herokuapp.com/main
 
+# Testing:
+  All tests are located in the testing folder, which is in the main repository folder.
+  They can be run by using the command pytest in the terminal
+
 # Main features
 
 **1. Login Page.**
