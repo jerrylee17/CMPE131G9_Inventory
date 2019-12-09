@@ -12,23 +12,64 @@
 			
 					<div  id = "loginbody">
 
-							<ul class="list-group-item">
+						<table class="table table-striped">
+							<thead class="thead-dark">
+								<tr>
+								<th scope="col">#</th>
+								<th scope="col">&nbsp</th>
+								<th scope="col">Ingredient</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Disposal Reason</th>
+								</tr>
+							</thead>
+						</table>
 
-                                    {% for item in list %}                                                       
-                                  
-									<li class="list-group-item d-flex justify-content-start">
-                                            <div> {{ item }} </div>
-                
-						            </li>
+						<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">
 
-                                    {% endfor %}
-							</ul>
-                    </div><br>
+											{% for number in idNumber  %}                                                       
+												<div> #{{ number }} </div>
+											{% endfor %}
+											
+										</th>
+
+										<th scope="col">&nbsp</th>
+
+										<th scope="col">
+
+											{% for ingre in ingredient  %}                                                       
+											<div> {{ ingre }} </div>
+											{% endfor %}
+											
+										</th>
+
+										<th scope="col">
+
+											{% for quant in quantity  %}                                                       
+												<div> {{ quant }} </div>
+											{% endfor %}
+											
+										</th>
+
+										<th scope="col">
+
+											{% for reas in reason  %}                                                       
+												<div> {{ reas }} </div>
+											{% endfor %}
+											
+										</th>
+
+
+									</tr>
+								</thead>
+							</table>
+
+                    </div>
 			</div>
 			
-			<div class="col-sm">
 		
-			</div>
 		</div>  
 </div>
 

@@ -5,22 +5,22 @@
 		<div class="row">
 			<div class="col-sm" class="container2" id="background_">
 					
-					<h2 id = "loginbody" class= "font_HighVoltage">
-                            Food Order
+					<h2 id = "loginbody" class= "font_HighVoltage" style="color: limegreen;">
+                            Success!
                             <br>
 					</h2>
                                        
                     <ul class="list-group-item">
 
-                        <li class="list-group-item d-flex justify-content-center">
-                                <div> Order has been completed.</div>
+                        <li class="list-group-item d-flex justify-content-center" style="font-weight: bolder;">
+                                <div > You order has been processed.</div>
                         </li>
                     </ul>
                         
                     <form action = "" method="POST" id = "loginbody">
-                            <br>
+                            
                             {{order.hidden_tag()}}
-                            {{order.ret()}} 
+                            {{order.ret(class="btn btn-info")}} 
                     </form>
 			</div>
 			

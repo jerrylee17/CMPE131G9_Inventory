@@ -10,33 +10,48 @@
 <div class="container">
 		<div class="row">
 			<div class="col-sm" class="container2" id="background_">
+						ing.onchange = function() {
+							sel = ing.value;
+							if (sel == 'Other'){
+								AddTextBox();
+							} else {
+								RemoveTextBox();
+							}
+						}
+						function getDynamicTextBox(value){
+							return 'New ingredient: <input name="selingr" type="text"/>' +
+							` Measure: 
+								<select name="selm"> 
+									<option disabled selected value> -- select an option -- </option>
+									<option value="unit">unit</option>
+									<option value="gr">gr</option>
+									<option value="ml">ml</option>
+								</select>`
+						}
+						function AddTextBox(){
+							var div = document.createElement('DIV');
+							div.innerHTML = getDynamicTextBox("");
+							document.getElementById("TextBoxContainer").appendChild(div);
+						}
+						function RemoveTextBox(){
+							var node = document.getElementById("TextBoxContainer");
+        					node.innerHTML = "";
+						}
+					</script>
+					<div id="TextBoxContainer">
+						<!--Textboxes will be added here -->
+					</div>
+					<li class="list-group-item d-flex justify-content-between">
+							<div> {{form.quantity.label}}&nbsp;:</div>
+						
+							<div> {{form.quantity(size=20)}}</div>
+					</li>
+				</ul>
 					
-					<h2 id = "loginbody" class= "font_HighVoltage">
-							<br>Input Ingredients
-					</h2>
-					<br>	
-					<form method="POST"  id = "loginbody">
-							{{form.hidden_tag()}}
-
-							<ul class="list-group-item">
-									<li class="list-group-item d-flex justify-content-between">
-											<div> {{form.isel.label}}</div>
-											<div> &nbsp;:&nbsp;&nbsp;&nbsp;</div>
-											<div> {{form.isel}} </div>
-									</li> <br>
-									
-									<li class="list-group-item d-flex justify-content-between">
-											<div> {{form.quantity.label}}&nbsp;:</div>
-										
-											<div> {{form.quantity(size=20)}}</div>
-									</li>
-							</ul>
-								
-							<div id = "loginbody">
-								<br>{{form.finished()}}
-							</div>
-					</form>
-			</div>
+				<div id = "loginbody">
+					<br>{{form.finished(class="btn btn-primary")}}
+				</div>
+			</form>
 			
 			<div class="col-sm">
 		

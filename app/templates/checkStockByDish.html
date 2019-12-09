@@ -1,31 +1,90 @@
 {% extends "nav.html" %}
 
 {% block content %}
+
 <style>
-    #dishing{list-style-type: none;}
+        #dishing{list-style-type: none;}
 </style>
-    <h1>Stock by Dish</h1>
-    <form action="" method="POST">
-            {{form2.hidden_tag()}}
-        <p>
-            {{ form2.dish.label }} {{ form2.dish }}
-            {{form2.submit3()}} {{form2.back()}}
-        </p>
-    </form>
-    <b1>
-        {%if signal%}
-            <div class="data row">
-                <div>
-                    {% for item in finalList %}
-                        <ul id="dishing">
-                            <li><b>Product ID: {{item[0]}}</b></li>
-                            <li>Ingredient: {{item[1]}}</li>
-                            <li>Quantity: {{item[2]}}{{item[3]}}</li>
-                        </ul>
-                    {% endfor %}
-                </div>
-            </div>
-        {%endif%}
-    </b1>
+
+<div class="container">
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
+					
+					<h2 id = "loginbody" class= "font_HighVoltage">
+							<br>Stock by Dish
+					</h2>
+					<br>	
+					<form action="" method="POST"  id = "loginbody">
+
+							{{form2.hidden_tag()}}
+
+							<ul class="list-group-item">
+
+									<li class="list-group-item d-flex justify-content-center" style="font-weight: bolder;">
+											<div> Select a Dish</div>
+											
+									</li> <br>
+									
+									<li class="list-group-item d-flex justify-content-center">
+                                            <div>{{ form2.dish }}</div>
+											
+									</li>
+							</ul>
+								
+							<div id = "loginbody">
+								{{form2.back(class="btn btn-info")}} {{form2.submit3(class="btn btn-primary")}} 
+                            </div>
+                            
+					</form>
+			</div>
+			
+	
+			<div class="col-sm" ><br>
+                <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                            <th scope="col">ID #</th>
+                            <th scope="col">Ingredient</th>
+                            <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                </table>
+
+                <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">
+
+                                    {% for item in finalList  %}                                                       
+                                        <div> #{{item[0]}} </div>
+                                    {% endfor %}
+                                    
+                                </th>
+
+                                <th scope="col">&nbsp;</th>
+                            
+                                <th scope="col">
+
+                                    {% for item in finalList  %}                                                       
+                                    <div> {{item[1]}} </div>
+                                    {% endfor %}
+                                    
+                                </th>
+
+                                <th scope="col">
+
+                                    {% for item in finalList  %}                                                       
+                                        <div> {{item[2]}}&nbsp;&nbsp;&nbsp;{{item[3]}} </div>
+                                    {% endfor %}
+                                    
+                                </th>
+
+                            </tr>
+                        </thead>
+                </table>
+
+			</div>
+		</div>   
+</div>
 
 {% endblock %}
