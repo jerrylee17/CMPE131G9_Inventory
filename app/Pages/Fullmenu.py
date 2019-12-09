@@ -15,5 +15,5 @@ def fullmenu():
         all[i] = (i,x)
     return render_template('fullmenu.html', all=all)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

@@ -32,6 +32,27 @@ for i in dishIngredients:
 
 for i in record:
     print(i.id,i.userName,i.ingredientName3,i.quantity3,i.unitMeasure3,i.comment)'''
+def DgetChoices():
+    dishIngredients = dishIngredientReq.query.all()
+    mainList=[]
+    for item in dishIngredients:
+        mainList.append(item.dishName)
+    noDuplicateList = list(set(mainList))
+    noDuplicateList.sort()
+    pairs=[]
+    for item2 in noDuplicateList:
+        pairs.append([item2.replace(" ", "_"),item2])
+    return pairs
+
+def IgetChoices():
+    inventoryTemp = ingredientInventory.query.all()
+    generalList=[]
+    for item in inventoryTemp:
+        object1 = item.ingredientName
+        object2 = item.ingredientName
+        generalList.append([object1.replace(" ", "_"),object2])
+    generalList.sort(key=lambda x: x[0])
+    return generalList
 
 @app.route('/stock',methods = ["GET","POST"])
 @login_required
@@ -48,6 +69,7 @@ def stock():
 @app.route('/checkStockByDish',methods = ["GET","POST"])
 def byDish():
     form2 = usingDish()
+    form2.dish.choices = DgetChoices()
     if form2.validate_on_submit():
         if form2.back.data:
             return redirect('/stock')
@@ -86,6 +108,7 @@ def byDish():
 @app.route('/checkStockByIngredient',methods = ["GET","POST"])
 def byIngredient():
     form3 = usingIngredient()
+    form3.ingredient.choices = IgetChoices()
     if form3.validate_on_submit():
         if form3.back.data:
             return redirect('stock')
@@ -130,5 +153,5 @@ class usingIngredient(FlaskForm):
     submit4 = SubmitField('Check!')
     back = SubmitField('Back to Stock')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

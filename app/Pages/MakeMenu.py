@@ -27,10 +27,10 @@ def makemenu():
             try:
                 ingredient = request.form[ig]
                 quantity = request.form[q]
-                measure = request.form[m]
+                measure = request.form.get(m)
+                print(measure)
                 if not ingredient or not quantity or not measure:
                     return redirect('/errorDish/' + "dishVoid")
-                measure = measure.lower()
                 if measure not in selections:
                     return redirect('errorDish/' + "measure")
                 try:
@@ -84,5 +84,5 @@ class ing(FlaskForm):
 class err(FlaskForm):
     back = SubmitField('Go back')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

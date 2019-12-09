@@ -12,11 +12,22 @@ from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
+def getChoices():
+    inventoryTemp = ingredientInventory.query.all()
+    generalList=[]
+    object2 = ""
+    for item in inventoryTemp:
+        object1 = item.ingredientName
+        object2 = item.unitMeasure
+        finalstr = str(object1) + " ( " + str(object2) + " ) "
+        generalList.append([object1.replace(" ", "_"), finalstr])
+    return generalList
 
 @app.route('/dispose',methods=["GET","POST"])
 @login_required
 def dispose():
     form = disposal()
+    form.ingredient.choices = getChoices()
     if form.validate_on_submit():
         dispose2(form)
 
@@ -85,5 +96,5 @@ class disposal(FlaskForm):
     usercomment = StringField('Comments', validators=[DataRequired()])                                          
     submit = SubmitField('Remove From Inventory')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
