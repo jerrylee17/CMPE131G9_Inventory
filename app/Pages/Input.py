@@ -105,7 +105,7 @@ class InputForm(FlaskForm):
     iform = []
     for ing in all:
         iform.append([ing[0].replace(" ", "_"), ing[0]+" ( "+ing[1]+ ")"])
-    # iform.append(["other", "other"])
+    iform.append(["Other", "Other"])
     # dic = {}
     # # clean up units inside all
     # for elem in all:
