@@ -14,6 +14,9 @@ app.config['SECRET_KEY'] = 'some-key'
 @app.route('/input', methods=["GET", "POST"])
 @login_required
 def input():
+    """
+    Input ingredients page
+    """
     form = InputForm()
     if form.validate_on_submit():
         input2(form)
@@ -38,6 +41,12 @@ def input():
     return render_template('input.html', form=form)
 
 def input2(form):
+    """
+    Handle the input form onclick
+    
+    Args: 
+        form(FlaskForm): form with the information
+    """
     amount = form.quantity.data
     if amount <= 0:
         return redirect('/inputerr')
@@ -58,6 +67,9 @@ def input2(form):
 @app.route('/inputerr', methods=["GET", "POST"])
 @login_required
 def inputErr():
+    """
+    Error with inputting ingredients page
+    """
     back = goBack()
     if back.validate_on_submit():
         return redirect('/input')
@@ -66,15 +78,24 @@ def inputErr():
 @app.route('/inputd', methods=["GET", "POST"])
 @login_required
 def inputDone():
+    """
+    Successfully stored ingredients page
+    """
     back = goBack()
     if back.validate_on_submit():
         return redirect('/input')
     return render_template('dd.html', back=back)
 
 class goBack(FlaskForm):
+    """
+    Form for going to the pervious page
+    """
     back = SubmitField('Go Back')
 
 class InputForm(FlaskForm):
+    """
+    Input ingredients form
+    """
     ingredients = ingredientInventory.query.all()
     all = []
     for ingredient in ingredients:
@@ -96,5 +117,7 @@ class InputForm(FlaskForm):
     quantity = IntegerField('Quantity', validators=[DataRequired()])
     finished = SubmitField('Input ingredients')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+
+# if __name__ == '__main__':
+#     app.run(debug=True)

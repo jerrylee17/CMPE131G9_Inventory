@@ -8,7 +8,6 @@ from app.Pages.models import User
 from flask import flash, redirect , request, url_for
 from app.Pages.models import ingredientInventory,dishIngredientReq,disposalRecord
 from app import db
-
 from flask_login import current_user, login_user
 from flask_login import logout_user
 from flask_login import login_required
@@ -16,63 +15,10 @@ from werkzeug.urls import url_parse
 
 app.config['SECRET_KEY'] = 'some-key'
 
-'''db.create_all()'''
-'''
-userDataFile = open("app/obj/baseInventoryData.txt","r+")
-
-for line in userDataFile:
-
-    fields = line.split(";")
-
-    field0 = fields[0]
-
-    field1 = fields[1]
-
-    field2 = fields[2]
-
-    print (field0,field1,field2)
-
-    temp = ingredientInventory(ingredientName=field0,quantity=field1,unitMeasure=field2)
-
-    db.session.add(temp)
-    db.session.commit()
-
-userDataFile.close()'''
-'''
-userDataFile = open("app/obj/baseDishData.txt","r+")
-
-for line in userDataFile:
-
-    fields = line.split(";")
-
-    field0 = fields[0]
-
-    field1 = fields[1]
-
-    field2 = fields[2]
-
-    field3 = fields[3]
-
-    print (field0,field1,field2,field3)
-
-    temp = dishIngredientReq(dishName=field0,ingredientName2=field1,quantity2=field2,unitMeasure2=field3)
-
-    db.session.add(temp)
-    db.session.commit()
-
-userDataFile.close()'''
-
 @app.route('/login',methods = ["GET","POST"])
 def login():
-
     """
-    form = Login()
-
-    if form.validate_on_submit():
-        flash("Succesfull Login")
-        return redirect("/dispose")
-
-    return render_template('login.html', form=form)
+    Login page
     """
     if current_user.is_authenticated:
         return redirect('/main')
@@ -94,9 +40,9 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign in', form=form)
 
-sampleUsername = "person123"
+# sampleUsername = "person123"
 
-userPassword = ""
+# userPassword = ""
 
 """
 def validate_username(form, field):
@@ -130,15 +76,23 @@ def validate_password(form, field):
 
 @app.route('/logout')
 def logout():
+    """
+    Logout page
+    
+    Returns:
+        Immediately returns to the login page
+    """
     logout_user()
     return redirect('/login')
 
 
 class Login(FlaskForm):
+    """
+    Login form
+    """
 
     sampleUsername = "person123"
     samplePassword = "p"
-
     username = StringField("Username", [DataRequired()])
     password = PasswordField("Password", [DataRequired()])
     submit = SubmitField("Sign In")

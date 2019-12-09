@@ -12,6 +12,9 @@ app.config['SECRET_KEY'] = 'some-key'
 @app.route('/makemenu', methods = ["GET","POST"])
 @login_required
 def makemenu():
+    """
+    Make a new dish page
+    """
     form = ing()
     done = butn()
     
@@ -54,6 +57,9 @@ def makemenu():
 
 @app.route('/dishMade', methods = ["GET", "POST"])
 def madeDish():
+    """
+    Dish successfully made page
+    """
     back = err()
     if back.validate_on_submit():
         return redirect('/makemenu')
@@ -61,16 +67,30 @@ def madeDish():
 
 @app.route('/errorDish/<string:errtype>', methods = ["GET", "POST"])
 def errordish(errtype):
+    """
+    Dish has an error page
+
+    Args:
+        errtype(string): Type of error determined by system
+    """
     back = err()
     if back.validate_on_submit():
         return redirect('/makemenu')
     return render_template('errDish.html', signal=errtype, back=back)
 
 class butn(FlaskForm):
+    """
+    Wrapper form of the dynamic webpage that has the dish name and create button
+    """
     name = StringField('Dish Name', validators=[DataRequired()])
     clicky = SubmitField('Create Dish')
 
 class ing(FlaskForm):
+    """
+    +++NOT USED+++
+
+    Initially was the dynamic part of the webpage that would stack when a button was pressed
+    """
     ingredient = StringField('Ingredient: ', validators=[DataRequired()])
     quantity = FloatField('Quantity: ',validators=[DataRequired()])
     measures = [('unit', 'unit'), ('gr','gr'), ('ml', 'ml')]
@@ -82,6 +102,9 @@ class ing(FlaskForm):
     # measure = SelectField(u'Measure: ', choices=measures)
 
 class err(FlaskForm):
+    """
+    Error form for default error page
+    """
     back = SubmitField('Go back')
 
 # if __name__ == '__main__':
