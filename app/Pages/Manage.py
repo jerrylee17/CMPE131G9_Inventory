@@ -10,21 +10,39 @@ from app import db
 from flask import flash, redirect , request
 from flask_login import login_required
 
+def invertList(input_list): 
+   input_list.reverse()
+   return input_list
+
 @app.route('/manage')
 @login_required
 def manage():
 
     disp = disposalRecord.query.all()
 
-    list = []
+    idNumber = []
+    ingredient = []
+    quantity = []
+    reason = []
 
     for i in disp:
 
-        record = " "+str(i.id)+". "+i.ingredientName3+" "+str(i.quantity3)+i.unitMeasure3+"  Comment:"+i.comment
+        number = i.id
+        ingre = i.ingredientName3
+        quan = str(i.quantity3)+"   "+i.unitMeasure3
+        rea = i.comment
 
-        list.append(record)
-        
-    return render_template('manage.html',list=list)
+        idNumber.append(number)
+        ingredient.append(ingre)
+        quantity.append(quan)
+        reason.append(rea)
+
+    idNumber=invertList(idNumber)
+    ingredient=invertList(ingredient)
+    quantity=invertList(quantity)
+    reason=invertList(reason)
+
+    return render_template('manage.html',idNumber=idNumber,ingredient=ingredient,quantity=quantity,reason=reason)
 
 # if __name__ == '__main__':
 #     app.run(debug=True)

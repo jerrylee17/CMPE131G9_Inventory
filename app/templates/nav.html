@@ -23,9 +23,9 @@
                 Menu<b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li ><a href="/alldishes">&nbsp;•Current Menu</a></li> <br>
-                <li ><a href="/makemenu">&nbsp;•New Dish</a></li><br>
-                <li ><a href="/order">&nbsp;•Order Food</a></li>
+                <li ><a href="/alldishes">&nbsp;Current Menu</a></li> <br>
+                <li ><a href="/makemenu">&nbsp;New Dish</a></li><br>
+                <li ><a href="/order">&nbsp;Order Food</a></li>
             </ul>
     </li>
 
@@ -34,10 +34,10 @@
                 Ingredients<b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li ><a href="/stock">&nbsp;•Stock</a></li><br>
-                <li ><a href="/input">&nbsp;•Input Ingredients</a></li><br>
-                <li ><a href="/dispose">&nbsp;•Dispose</a></li><br>
-                <li ><a href="/manage">&nbsp;•Disposal Record</a></li>
+                <li ><a href="/stock">&nbsp;Stock</a></li><br>
+                <li ><a href="/input">&nbsp;Input Ingredients</a></li><br>
+                <li ><a href="/dispose">&nbsp;Dispose</a></li><br>
+                <li ><a href="/manage">&nbsp;Disposal Record</a></li>
             </ul>
     </li>
 
@@ -49,11 +49,11 @@
         {% with messages = get_flashed_messages()%}
             {%if messages%}
 
-            <ul>
+            <ul id="flash">
 
                 {%for message in messages%}
-                <li>{{message}}</li>
-                {%endfor%}
+					<font color="red">-{{message}}</font>
+				{%endfor%}
 
             </ul>
 

@@ -1,20 +1,63 @@
 {% extends "nav.html" %}
 
 {% block content %}
-    <h1>Stock by Ingredient</h1>
+
+<div class="container">
+		<div class="row">
+			<div class="col-sm" class="container2" id="background_">
+					
+					<h2 id = "loginbody" class= "font_HighVoltage">
+							<br>Stock by Ingredient
+					</h2>
+					<br>	
+					<form action="" method="POST"  id = "loginbody">
+
+							{{form3.hidden_tag()}}
+
+							<ul class="list-group-item">
+
+									<li class="list-group-item d-flex justify-content-center" style="font-weight: bolder;">
+											<div> Select a Ingredient</div>
+											
+									</li> <br>
+									
+									<li class="list-group-item d-flex justify-content-center">
+                                            <div>{{ form3.ingredient }}</div>
+											
+									</li>
+							</ul>
+								
+							<div id = "loginbody">
+								{{form3.back(class="btn btn-info")}} {{form3.submit4(class="btn btn-primary")}} 
+                            </div>
+                            
+					</form>
+			</div>
+			
+			<div class="col-sm">
+		
+			</div>
+	
+			<div class="col-sm" ><br>
+                    <table class="table table-striped">
+							<thead class="thead-dark">
+								<tr>
+								<th scope="col">ID Number</th>
+								<th scope="col">Current Stock</th>
+								</tr>
+                            </thead>
+                            
+                            <tbody>
+                                    <tr>
+                                      <td>{{item1}}</td>
+                                      <td>{{item3}}</td>
+                                    </tr>
+                            </tbody>
+                    </table>
+			</div>
+		</div>   
+</div>
+
     
-    <form action="" method="POST">
-
-            {{form3.hidden_tag()}}
-
-        <p>
-            {{ form3.ingredient.label }} {{ form3.ingredient }}
-            {{form3.submit4()}} {{form3.back()}}
-        </p>
-
-    </form>
-
-    <p>ID Number: {{item1}}</p>
-    <p>Current Stock: {{item3}}</p>
 
 {% endblock %}

@@ -67,7 +67,7 @@ def dispose2(form):
             break
     selectedIngredient = ingredientInventory.query.get(idNumber)
     if form.quantity.data <= 0:
-        flash("Please enter something above 0!")
+        flash("Invalid quantity, please use a positive number")
         return redirect("/dispose")
     elif form.quantity.data>selectedIngredient.quantity:
         flash("Available stock is less than que quantity to be disposed")
