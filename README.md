@@ -36,10 +36,6 @@ Github repository: https://github.com/jerrylee17/CMPE131G9_Inventory
 
 Website deployment: https://masterkitchen.herokuapp.com/main
 
-# Testing:
-  All tests are located in the testing folder, which is in the main repository folder.
-  They can be run by using the command pytest in the terminal
-
 # Main features
 
 **1. Login Page.**
@@ -103,7 +99,8 @@ Website deployment: https://masterkitchen.herokuapp.com/main
   Every page of this website is encoded with a "go back" button. For example, when an ingredient is inputted, the user will either be directed to an error page that explains what is wrong with the ingredient input or it will lead the user to a "delivery successful" page. Each of these pages will have a go back button that allows the user to go back to filling out the form. This page exists in each of the pages, including "Input Ingredients", "New Dish", "Order Food", and each page within "Stock". 
 
 # Testing
-
+  All tests are located in the testing folder, which is in the main repository folder.
+  They can be run by using the command pytest in the terminal
 
 # Documentation
 

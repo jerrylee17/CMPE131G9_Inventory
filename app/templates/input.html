@@ -2,42 +2,56 @@
 {% block content %}
 
 <head>
-		<link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"></link>
-    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"></link>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
 <div class="container">
-		<div class="row">
-			<div class="col-sm" class="container2" id="background_">
-						ing.onchange = function() {
-							sel = ing.value;
-							if (sel == 'Other'){
-								AddTextBox();
-							} else {
-								RemoveTextBox();
-							}
+	<div class="row">
+		<div class="col-sm" class="container2" id="background_">
+			<h2 id = "loginbody" class= "font_HighVoltage">
+					<br>Input Ingredients
+			</h2>
+			<br />
+			<form method="POST"  id = "loginbody">	
+				{{form.hidden_tag()}}
+				<ul class="list-group-item">
+					<li class="list-group-item d-flex justify-content-between">
+							<div> {{form.isel.label}}</div>
+							<div> &nbsp;:&nbsp;&nbsp;&nbsp;</div>
+							<div> {{form.isel}} </div>
+					</li> <br>
+				<script>
+					let ing = document.getElementById('isel')
+					ing.onchange = function() {
+						sel = ing.value;
+						if (sel == 'Other'){
+							AddTextBox();
+						} else {
+							RemoveTextBox();
 						}
-						function getDynamicTextBox(value){
-							return 'New ingredient: <input name="selingr" type="text"/>' +
-							` Measure: 
-								<select name="selm"> 
-									<option disabled selected value> -- select an option -- </option>
-									<option value="unit">unit</option>
-									<option value="gr">gr</option>
-									<option value="ml">ml</option>
-								</select>`
-						}
-						function AddTextBox(){
-							var div = document.createElement('DIV');
-							div.innerHTML = getDynamicTextBox("");
-							document.getElementById("TextBoxContainer").appendChild(div);
-						}
-						function RemoveTextBox(){
-							var node = document.getElementById("TextBoxContainer");
-        					node.innerHTML = "";
-						}
-					</script>
+					}
+					function getDynamicTextBox(value){
+						return 'New ingredient: <input name="selingr" type="text"/>' +
+						` Measure: 
+							<select name="selm"> 
+								<option disabled selected value> -- select an option -- </option>
+								<option value="unit">unit</option>
+								<option value="gr">gr</option>
+								<option value="ml">ml</option>
+							</select>`
+					}
+					function AddTextBox(){
+						var div = document.createElement('DIV');
+						div.innerHTML = getDynamicTextBox("");
+						document.getElementById("TextBoxContainer").appendChild(div);
+					}
+					function RemoveTextBox(){
+						var node = document.getElementById("TextBoxContainer");
+						node.innerHTML = "";
+					}
+				</script>
 					<div id="TextBoxContainer">
 						<!--Textboxes will be added here -->
 					</div>
@@ -51,16 +65,16 @@
 				<div id = "loginbody">
 					<br>{{form.finished(class="btn btn-primary")}}
 				</div>
-			</form>
-			
-			<div class="col-sm">
+		</form>
 		
-			</div>
+		<div class="col-sm">
 	
-			<div class="col-sm">
-		
-			</div>
-		</div>   
+		</div>
+
+		<div class="col-sm">
+	
+		</div>
+	</div>   
 </div>
 
 	
