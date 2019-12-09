@@ -17,7 +17,9 @@ def invertList(input_list):
 @app.route('/manage')
 @login_required
 def manage():
-
+    """
+    Disposal record page
+    """
     disp = disposalRecord.query.all()
 
     idNumber = []

@@ -13,6 +13,12 @@ from flask_login import login_required
 app.config['SECRET_KEY'] = 'some-key'
 
 def getChoices():
+    """ 
+    Get updated list of ingredients
+    
+    Returns: 
+        List of tuples for a selectfield with updated ingredients
+    """
     inventoryTemp = ingredientInventory.query.all()
     generalList=[]
     object2 = ""
@@ -26,6 +32,10 @@ def getChoices():
 @app.route('/dispose',methods=["GET","POST"])
 @login_required
 def dispose():
+    """ 
+    Dispose ingredients page
+    """
+    
     form = disposal()
     form.ingredient.choices = getChoices()
     if form.validate_on_submit():
@@ -57,6 +67,13 @@ def dispose():
     return render_template('dispose.html',form=form)
 
 def dispose2(form):
+    """ 
+    Handle the disposal form onclick
+
+    Args: 
+        form(FlaskForm): form with the information
+    """
+
     ing = form.ingredient.data.replace("_", " ")
     inv = ingredientInventory.query.all()
 
@@ -82,6 +99,10 @@ def dispose2(form):
     return redirect("/dispose")
 
 class disposal(FlaskForm):
+    """
+    Disposal form
+    """
+
     inventoryTemp = ingredientInventory.query.all()
     generalList=[]
     object2 = ""

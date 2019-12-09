@@ -1,12 +1,40 @@
 [![Build Status](https://travis-ci.com/jerrylee17/CMPE131G9_Inventory.svg?branch=master)](https://travis-ci.com/jerrylee17/CMPE131G9_Inventory)
 
-# Instructions to run Application
+# MasterKitchen, the ultimate tool for a MasterChef
 
-1. Application starts at main-menu page
-2. From main page, user can have access to all features of the application.
-3. In order to make changes that affect the database, user needs to log in.
-4. Users have different credentials that allow them to access high level features that modify database.
-5. Click on one the options displayed in the navigation bar to access a feature.
+Masterkitchen is a utility that allows restraunts to keep track of their inventory. Masterkitchen comes with a variety of tools, as described below in the features, that helps control the chaos of finding ingredients. 
+
+# Running this repository locally
+
+1. Clone this repository:
+
+```
+git clone https://github.com/jerrylee17/CMPE131G9_Inventory.git
+```
+
+2. Install all necessary packages
+```
+pip install -U -r requirements.txt
+```
+3. set ```FLASK_APP``` to the proper file
+
+<p align="center"> Windows</p>
+
+```
+set FLASK_APP=app
+```
+
+<p align="center"> Linux</p>
+
+```
+export FLASK_APP=app
+```
+
+# Information
+
+Github repository: https://github.com/jerrylee17/CMPE131G9_Inventory
+
+Website deployment: https://masterkitchen.herokuapp.com/main
 
 # Main features
 
@@ -69,3 +97,10 @@
 **13. Good flow of website**
 
   Every page of this website is encoded with a "go back" button. For example, when an ingredient is inputted, the user will either be directed to an error page that explains what is wrong with the ingredient input or it will lead the user to a "delivery successful" page. Each of these pages will have a go back button that allows the user to go back to filling out the form. This page exists in each of the pages, including "Input Ingredients", "New Dish", "Order Food", and each page within "Stock". 
+
+# Testing
+
+
+# Documentation
+
+After cloning the file, go to ```./docs/build/html```. All of the documentation is within that folder. To view the full documentation, open ```index.html``` with a live server. 

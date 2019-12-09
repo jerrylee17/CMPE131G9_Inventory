@@ -11,28 +11,13 @@ from flask_login import login_required
 
 app.config['SECRET_KEY'] = 'some-key'
 
-'''selectedIngredient = ingredientInventory.query.get(1)
-
-selectedIngredient.quantity = 4530.00
-db.session.commit()'''
-'''
-inventory = ingredientInventory.query.all()
-
-for i in inventory:
-    print(i.id,i.ingredientName,i.quantity,i.unitMeasure)'''
-
-'''
-dishIngredients = dishIngredientReq.query.all()
-
-for i in dishIngredients:
-    print(i.id,i.dishName,i.ingredientName2,i.quantity2,i.unitMeasure2)'''
-
-
-'''record = disposalRecord.query.all()
-
-for i in record:
-    print(i.id,i.userName,i.ingredientName3,i.quantity3,i.unitMeasure3,i.comment)'''
 def DgetChoices():
+    """
+    Get updated list of dishes
+
+    Returns:
+        List of tuples for a selectfield of dishes
+    """
     dishIngredients = dishIngredientReq.query.all()
     mainList=[]
     for item in dishIngredients:
@@ -45,6 +30,12 @@ def DgetChoices():
     return pairs
 
 def IgetChoices():
+    """
+    Get updated list of ingredients
+
+    Returns:
+        List of tuples for a selectfield with updated ingredients
+    """
     inventoryTemp = ingredientInventory.query.all()
     generalList=[]
     for item in inventoryTemp:
@@ -57,6 +48,9 @@ def IgetChoices():
 @app.route('/stock',methods = ["GET","POST"])
 @login_required
 def stock():
+    """
+    Stock page
+    """
     form = checkForm()
     if form.validate_on_submit():
         if form.submit1.data:
@@ -68,6 +62,9 @@ def stock():
 
 @app.route('/checkStockByDish',methods = ["GET","POST"])
 def byDish():
+    """
+    Check stock by dish page
+    """
     form2 = usingDish()
     form2.dish.choices = DgetChoices()
     if form2.validate_on_submit():
@@ -107,6 +104,9 @@ def byDish():
 
 @app.route('/checkStockByIngredient',methods = ["GET","POST"])
 def byIngredient():
+    """
+    Check stock by ingredient page
+    """
     form3 = usingIngredient()
     form3.ingredient.choices = IgetChoices()
     if form3.validate_on_submit():
@@ -125,10 +125,18 @@ def byIngredient():
     return render_template('checkStockByIngredient.html',form3=form3)
 
 class checkForm(FlaskForm):
+    """
+    Initial stock form
+
+    Selects dish or ingredient
+    """
     submit1 = SubmitField("By Dish")
     submit2 = SubmitField("By Ingredient")
 
 class usingDish(FlaskForm):
+    """
+    Using dish form
+    """
     dishIngredients = dishIngredientReq.query.all()
     mainList=[]
     for item in dishIngredients:
@@ -143,6 +151,9 @@ class usingDish(FlaskForm):
     back = SubmitField('Back to Stock')
 
 class usingIngredient(FlaskForm):
+    """
+    Using ingredient form
+    """
     inventoryTemp = ingredientInventory.query.all()
     generalList=[]
     for item in inventoryTemp:

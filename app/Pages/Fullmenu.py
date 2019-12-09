@@ -6,6 +6,9 @@ from app.Pages.models import dishIngredientReq
 @app.route('/alldishes', methods=["GET"])
 @login_required
 def fullmenu():
+    """
+    Display the full menu page
+    """
     dishes = dishIngredientReq.query.all()
     all = []
     for dish in dishes:

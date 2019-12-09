@@ -12,11 +12,13 @@ from flask_login import login_required
 
 @app.route('/')
 def index():
+    """
+    Main page when not logged in
+    """
     return redirect('/login')
 
 @app.route('/main',methods = ["GET","POST"])
 def main():
-
     form = checkForm()
 
     if form.validate_on_submit():

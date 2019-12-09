@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Functions &#8212; CMPE131G9_Inventory 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Models" href="models.html" />
+    <link rel="prev" title="How to use masterkitchen" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-app.Pages.Dispose">
+<span id="dispose"></span><h2>Dispose<a class="headerlink" href="#module-app.Pages.Dispose" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.Pages.Dispose.disposal">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.Dispose.</code><code class="sig-name descname">disposal</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Dispose.disposal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disposal form</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Dispose.dispose">
+<code class="sig-prename descclassname">app.Pages.Dispose.</code><code class="sig-name descname">dispose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Dispose.dispose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dispose ingredients page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Dispose.dispose2">
+<code class="sig-prename descclassname">app.Pages.Dispose.</code><code class="sig-name descname">dispose2</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Dispose.dispose2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle the disposal form onclick</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>form(FlaskForm): form with the information</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Dispose.getChoices">
+<code class="sig-prename descclassname">app.Pages.Dispose.</code><code class="sig-name descname">getChoices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Dispose.getChoices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get updated list of ingredients</p>
+<dl class="simple">
+<dt>Returns: </dt><dd><p>List of tuples for a selectfield with updated ingredients</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.FoodOrder">
+<span id="foodorder"></span><h2>FoodOrder<a class="headerlink" href="#module-app.Pages.FoodOrder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.Pages.FoodOrder.dishForm">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.FoodOrder.</code><code class="sig-name descname">dishForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.FoodOrder.dishForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ordering dish form</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.FoodOrder.doneOrder">
+<code class="sig-prename descclassname">app.Pages.FoodOrder.</code><code class="sig-name descname">doneOrder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.FoodOrder.doneOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finished with order page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.FoodOrder.foodOrder">
+<code class="sig-prename descclassname">app.Pages.FoodOrder.</code><code class="sig-name descname">foodOrder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.FoodOrder.foodOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Food order page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.FoodOrder.getChoices">
+<code class="sig-prename descclassname">app.Pages.FoodOrder.</code><code class="sig-name descname">getChoices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.FoodOrder.getChoices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get updated list of dishes</p>
+<dl class="simple">
+<dt>Returns: </dt><dd><p>List of tuples for a selectfield with updated ingredients</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.FoodOrder.goBack">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.FoodOrder.</code><code class="sig-name descname">goBack</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.FoodOrder.goBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form for going to the previous page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.FoodOrder.ordErr">
+<code class="sig-prename descclassname">app.Pages.FoodOrder.</code><code class="sig-name descname">ordErr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.FoodOrder.ordErr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error with Food Order page</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.FoodOrder.orderDone">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.FoodOrder.</code><code class="sig-name descname">orderDone</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.FoodOrder.orderDone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finished order form</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.Fullmenu">
+<span id="fullmenu"></span><h2>Fullmenu<a class="headerlink" href="#module-app.Pages.Fullmenu" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.Pages.Fullmenu.fullmenu">
+<code class="sig-prename descclassname">app.Pages.Fullmenu.</code><code class="sig-name descname">fullmenu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Fullmenu.fullmenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the full menu page</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.Input">
+<span id="input"></span><h2>Input<a class="headerlink" href="#module-app.Pages.Input" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.Pages.Input.InputForm">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.Input.</code><code class="sig-name descname">InputForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Input.InputForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input ingredients form</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.Input.goBack">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.Input.</code><code class="sig-name descname">goBack</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Input.goBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form for going to the pervious page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Input.input">
+<code class="sig-prename descclassname">app.Pages.Input.</code><code class="sig-name descname">input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Input.input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input ingredients page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Input.input2">
+<code class="sig-prename descclassname">app.Pages.Input.</code><code class="sig-name descname">input2</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Input.input2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle the input form onclick</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>form(FlaskForm): form with the information</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Input.inputDone">
+<code class="sig-prename descclassname">app.Pages.Input.</code><code class="sig-name descname">inputDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Input.inputDone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Successfully stored ingredients page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Input.inputErr">
+<code class="sig-prename descclassname">app.Pages.Input.</code><code class="sig-name descname">inputErr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Input.inputErr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error with inputting ingredients page</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.Login">
+<span id="login"></span><h2>Login<a class="headerlink" href="#module-app.Pages.Login" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.Pages.Login.Login">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.Login.</code><code class="sig-name descname">Login</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Login.Login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Login form</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Login.login">
+<code class="sig-prename descclassname">app.Pages.Login.</code><code class="sig-name descname">login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Login.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Login page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Login.logout">
+<code class="sig-prename descclassname">app.Pages.Login.</code><code class="sig-name descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Login.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logout page</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Immediately returns to the login page</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.Main">
+<span id="main"></span><h2>Main<a class="headerlink" href="#module-app.Pages.Main" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.Pages.Main.index">
+<code class="sig-prename descclassname">app.Pages.Main.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Main.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main page when not logged in</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Main.main">
+<code class="sig-prename descclassname">app.Pages.Main.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Main.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main page</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.MakeMenu">
+<span id="makemenu"></span><h2>MakeMenu<a class="headerlink" href="#module-app.Pages.MakeMenu" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.Pages.MakeMenu.butn">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.MakeMenu.</code><code class="sig-name descname">butn</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.MakeMenu.butn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper form of the dynamic webpage that has the dish name and create button</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.MakeMenu.err">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.MakeMenu.</code><code class="sig-name descname">err</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.MakeMenu.err" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error form for default error page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.MakeMenu.errordish">
+<code class="sig-prename descclassname">app.Pages.MakeMenu.</code><code class="sig-name descname">errordish</code><span class="sig-paren">(</span><em class="sig-param">errtype</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.MakeMenu.errordish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dish has an error page</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>errtype(string): Type of error determined by system</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.MakeMenu.ing">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.MakeMenu.</code><code class="sig-name descname">ing</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.MakeMenu.ing" title="Permalink to this definition">¶</a></dt>
+<dd><p>+++NOT USED+++</p>
+<p>Initially was the dynamic part of the webpage that would stack when a button was pressed</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.MakeMenu.madeDish">
+<code class="sig-prename descclassname">app.Pages.MakeMenu.</code><code class="sig-name descname">madeDish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.MakeMenu.madeDish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dish successfully made page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.MakeMenu.makemenu">
+<code class="sig-prename descclassname">app.Pages.MakeMenu.</code><code class="sig-name descname">makemenu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.MakeMenu.makemenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a new dish page</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.Manage">
+<span id="manage"></span><h2>Manage<a class="headerlink" href="#module-app.Pages.Manage" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.Pages.Manage.manage">
+<code class="sig-prename descclassname">app.Pages.Manage.</code><code class="sig-name descname">manage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Manage.manage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disposal record page</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.Registration">
+<span id="registration"></span><h2>Registration<a class="headerlink" href="#module-app.Pages.Registration" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.Pages.Registration.register">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.Registration.</code><code class="sig-name descname">register</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Registration.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registration form</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.Pages.Stock">
+<span id="stock"></span><h2>Stock<a class="headerlink" href="#module-app.Pages.Stock" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.Pages.Stock.DgetChoices">
+<code class="sig-prename descclassname">app.Pages.Stock.</code><code class="sig-name descname">DgetChoices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Stock.DgetChoices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get updated list of dishes</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of tuples for a selectfield of dishes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Stock.IgetChoices">
+<code class="sig-prename descclassname">app.Pages.Stock.</code><code class="sig-name descname">IgetChoices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Stock.IgetChoices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get updated list of ingredients</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of tuples for a selectfield with updated ingredients</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Stock.byDish">
+<code class="sig-prename descclassname">app.Pages.Stock.</code><code class="sig-name descname">byDish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Stock.byDish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check stock by dish page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Stock.byIngredient">
+<code class="sig-prename descclassname">app.Pages.Stock.</code><code class="sig-name descname">byIngredient</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Stock.byIngredient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check stock by ingredient page</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.Stock.checkForm">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.Stock.</code><code class="sig-name descname">checkForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Stock.checkForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial stock form</p>
+<p>Selects dish or ingredient</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.Pages.Stock.stock">
+<code class="sig-prename descclassname">app.Pages.Stock.</code><code class="sig-name descname">stock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Stock.stock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stock page</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.Stock.usingDish">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.Stock.</code><code class="sig-name descname">usingDish</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Stock.usingDish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Using dish form</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.Pages.Stock.usingIngredient">
+<em class="property">class </em><code class="sig-prename descclassname">app.Pages.Stock.</code><code class="sig-name descname">usingIngredient</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.Pages.Stock.usingIngredient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Using ingredient form</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">CMPE131G9_Inventory</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">How to use masterkitchen</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.Dispose">Dispose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.FoodOrder">FoodOrder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.Fullmenu">Fullmenu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.Input">Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.Login">Login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.Main">Main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.MakeMenu">MakeMenu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.Manage">Manage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.Registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.Pages.Stock">Stock</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">How to use masterkitchen</a></li>
+      <li>Next: <a href="models.html" title="next chapter">Models</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Jerry Lee.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/functions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
