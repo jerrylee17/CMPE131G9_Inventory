@@ -84,5 +84,5 @@ class ing(FlaskForm):
 class err(FlaskForm):
     back = SubmitField('Go back')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
