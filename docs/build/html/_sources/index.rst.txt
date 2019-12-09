@@ -10,8 +10,9 @@ Welcome to CMPE131G9_Inventory's documentation!
     :maxdepth: 2
     :caption: Contents:
 
-    installation
+    usage
     functions
+    models
 
 
 Indices and tables

@@ -12,6 +12,7 @@ Welcome to CMPE131G9_Inventory's documentation!
 
     usage
     functions
+    models
 
 
 Indices and tables
