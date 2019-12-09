@@ -51,6 +51,7 @@ def IgetChoices():
         object1 = item.ingredientName
         object2 = item.ingredientName
         generalList.append([object1.replace(" ", "_"),object2])
+    generalList.sort(key=lambda x: x[0])
     return generalList
 
 @app.route('/stock',methods = ["GET","POST"])
@@ -152,5 +153,5 @@ class usingIngredient(FlaskForm):
     submit4 = SubmitField('Check!')
     back = SubmitField('Back to Stock')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
