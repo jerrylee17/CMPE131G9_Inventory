@@ -87,12 +87,13 @@ def dispose2(form):
         flash("Invalid quantity, please use a positive number")
         return redirect("/dispose")
     elif form.quantity.data>selectedIngredient.quantity:
-        flash("Available stock is less than que quantity to be disposed")
+        flash("Available stock is less than the quantity to be disposed")
         return redirect("/dispose")
     newQuantity = selectedIngredient.quantity - form.quantity.data
     selectedIngredient.quantity = newQuantity
     db.session.commit()
-    temp = disposalRecord(userName = "Logged User",ingredientName3=ing,quantity3=form.quantity.data,unitMeasure3=form.object2,comment=form.usercomment.data)
+    temp = disposalRecord(userName = "Logged User",ingredientName3=ing,\
+        quantity3=form.quantity.data,unitMeasure3=selectedIngredient.unitMeasure,comment=form.usercomment.data)
     db.session.add(temp)
     db.session.commit()
     flash("Removal successfull")
