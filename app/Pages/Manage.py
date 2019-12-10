@@ -14,19 +14,17 @@ def invertList(input_list):
    input_list.reverse()
    return input_list
 
-@app.route('/manage')
+@app.route('/manage', methods=["GET", "POST"])
 @login_required
 def manage():
     """
     Disposal record page
     """
     disp = disposalRecord.query.all()
+    clear = clr()
 
-    idNumber = []
-    ingredient = []
-    quantity = []
-    reason = []
-
+    idNumber, ingredient, quantity, reason = [], [], [], []
+    
     for i in disp:
 
         number = i.id
@@ -43,8 +41,22 @@ def manage():
     ingredient=invertList(ingredient)
     quantity=invertList(quantity)
     reason=invertList(reason)
+    if clear.validate_on_submit():
+        disposalRecord.query.delete()
+        db.session.commit()
+        return redirect('/manage')
 
-    return render_template('manage.html',idNumber=idNumber,ingredient=ingredient,quantity=quantity,reason=reason)
+    return render_template('manage.html',idNumber=idNumber,ingredient=ingredient,quantity=quantity,reason=reason, clr=clear)
+
+   
+
+
+
+class clr(FlaskForm):
+    """
+    Clear disposal record
+    """
+    clicky = SubmitField('Clear record')
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
